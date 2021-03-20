@@ -2,6 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import moment from 'moment';
 
+
+
 const Flight = React.memo(({flight}) => {
     const {terminal, localTime, destination, status, statusTime, airline, flightN} = flight;
     const time = moment(statusTime).format('HH:mm');
@@ -33,6 +35,7 @@ const Flight = React.memo(({flight}) => {
                 <span>{airline.name}</span>
             </td>
             <td>{flightN}</td>
+            <td className="details"><a>Flight details</a></td>
         </tr>
     );
 });

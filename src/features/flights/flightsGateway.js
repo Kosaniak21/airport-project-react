@@ -4,11 +4,13 @@ export const fetchFlightsList = direction =>
   fetch(`https://api.iev.aero/api/flights/${todayDate}`)
     .then(res => {
       if (res.ok) {
+        console.log(res.json)
         return res.json();
       }
       throw new Error();
     })
     .then(flightsData =>
+      // console.log(flightsData)
       flightsData.body[direction].map(flight => {
         return getDirectionFlights(flight, direction);
       }),

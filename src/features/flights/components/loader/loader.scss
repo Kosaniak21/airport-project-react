@@ -7,11 +7,11 @@ $r: 15;
 $d: $r * 2;
 $t: 2000;
 
-.spinner {
+.loader {
     width: #{$d}px;
     height: #{$d}px;
     position: absolute;
-    top: 80%;
+    top: 200%;
     left: 50%;
     margin-top: -#{$d/2}px;
     margin-left: -#{$d/2}px;
@@ -48,3 +48,4 @@ $t: 2000;
       transform: rotate(360deg);
     }
 }
+

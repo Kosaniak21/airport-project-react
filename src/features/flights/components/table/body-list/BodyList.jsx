@@ -2,15 +2,15 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 
 import Flight from './Flight';
-import {filteredFlightsListSelector, isFetchingSelector} from '../../../flights.selectors';
-import Spinner from '../../spinner/Spinner';
+import { filteredFlightsListSelector, isFetchingSelector } from '../../../flights.selectors';
+import Loader from '../../loader/Loader';
 
 const BodyList = React.memo(({searchedFlight}) => {
     const flightsList = useSelector(state => filteredFlightsListSelector(state));
     const isFetching = useSelector(state => isFetchingSelector(state));
 
     if (isFetching) {
-        return <Spinner/>;
+        return <Loader />;
     }
 
     const flights = searchedFlight
