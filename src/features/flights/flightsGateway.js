@@ -10,7 +10,6 @@ export const fetchFlightsList = direction =>
       throw new Error();
     })
     .then(flightsData =>
-      // console.log(flightsData)
       flightsData.body[direction].map(flight => {
         return getDirectionFlights(flight, direction);
       }),
