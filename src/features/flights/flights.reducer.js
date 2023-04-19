@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { SHOW_SPINNER, FLIGHTS_LIST_RECEIVED } from "./flights.actions";
-=======
-import { SHOW_SPINNER, FLIGHTS_LIST_RECEIVED } from './flights.actions';
->>>>>>> e4bfb1dc507d480f0ecce6a03311b267036c80d3
 
 const initialState = {
   isFetching: false,
