@@ -1,0 +1,25 @@
+.flights-navigation {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.departures {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;  
+    text-decoration: none;
+
+}
+.arrivals {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.fa-plane-arrival {
+   text-decoration: none;
+}
+.fa-plane-departure {
+    text-decoration: none;
+ }

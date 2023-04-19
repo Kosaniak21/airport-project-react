@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 import { SHOW_SPINNER, FLIGHTS_LIST_RECEIVED } from "./flights.actions";
+=======
+import { SHOW_SPINNER, FLIGHTS_LIST_RECEIVED } from './flights.actions';
+>>>>>>> e4bfb1dc507d480f0ecce6a03311b267036c80d3
 
 const initialState = {
   isFetching: false,
   flightsList: [],
 };
 
+<<<<<<< HEAD
 export const flightsReducer = (state = initialState, action) => {
+=======
+const flightsReducer = (state = initialState, action) => {
+>>>>>>> e4bfb1dc507d480f0ecce6a03311b267036c80d3
   switch (action.type) {
     case SHOW_SPINNER: {
       return {
@@ -23,3 +31,8 @@ export const flightsReducer = (state = initialState, action) => {
       return state;
   }
 };
+<<<<<<< HEAD
+=======
+
+export default flightsReducer;
+>>>>>>> e4bfb1dc507d480f0ecce6a03311b267036c80d3

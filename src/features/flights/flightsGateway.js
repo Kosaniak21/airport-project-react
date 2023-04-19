@@ -4,6 +4,10 @@ export const fetchFlightsList = direction =>
   fetch(`https://api.iev.aero/api/flights/${todayDate}`)
     .then(res => {
       if (res.ok) {
+<<<<<<< HEAD
+=======
+        console.log(res.json)
+>>>>>>> e4bfb1dc507d480f0ecce6a03311b267036c80d3
         return res.json();
       }
       throw new Error();
