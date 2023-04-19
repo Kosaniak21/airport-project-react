@@ -1,11 +1,11 @@
-import { SHOW_SPINNER, FLIGHTS_LIST_RECEIVED } from './flights.actions';
+import { SHOW_SPINNER, FLIGHTS_LIST_RECEIVED } from "./flights.actions";
 
 const initialState = {
   isFetching: false,
   flightsList: [],
 };
 
-const flightsReducer = (state = initialState, action) => {
+export const flightsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SHOW_SPINNER: {
       return {
@@ -23,5 +23,3 @@ const flightsReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default flightsReducer;

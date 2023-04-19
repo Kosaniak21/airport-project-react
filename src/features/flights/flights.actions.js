@@ -1,29 +1,19 @@
-import { fetchFlightsList } from './flightsGateway';
+import { fetchFlightsList } from "./flightsGateway";
 
-export const SHOW_SPINNER = 'FLIGHTS/SHOW_SPINNER';
-export const FLIGHTS_LIST_RECEIVED = 'FLIGHTS/FLIGHTS_LIST_RECEIVED';
+export const SHOW_SPINNER = "FLIGHTS/SHOW_SPINNER";
+export const FLIGHTS_LIST_RECEIVED = "FLIGHTS/FLIGHTS_LIST_RECEIVED";
 
-export const showSpinner = () => {
-  return {
-    type: SHOW_SPINNER,
-  };
-};
+export const showSpinner = () => ({ type: SHOW_SPINNER });
 
-
-export const flightsListRecieved = flightsData => {
-  const action = {
-    type: FLIGHTS_LIST_RECEIVED,
-    payload: {
-      flightsData,
-    },
-  };
-  return action;
-};
-
-export const getFlightsList = direction => {
-  const thunkAction = dispatch => {
+export const flightsListRecieved = (flightsData) => ({
+  type: FLIGHTS_LIST_RECEIVED,
+  payload: { flightsData },
+});
+export const getFlightsList = (direction) => {
+  return (dispatch) => {
     dispatch(showSpinner());
-    fetchFlightsList(direction).then(flightsList => dispatch(flightsListRecieved(flightsList)));
+    fetchFlightsList(direction).then((flightsList) =>
+      dispatch(flightsListRecieved(flightsList))
+    );
   };
-  return thunkAction;
 };
