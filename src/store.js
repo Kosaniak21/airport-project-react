@@ -1,5 +1,5 @@
-import { flightsReducer } from "./features/flights/flights.reducer";
-import { configureStore } from "@reduxjs/toolkit";
+import { flightsReducer } from './redux-store/flights.reducer';
+import { configureStore } from '@reduxjs/toolkit';
 
 const store = configureStore({
   reducer: {

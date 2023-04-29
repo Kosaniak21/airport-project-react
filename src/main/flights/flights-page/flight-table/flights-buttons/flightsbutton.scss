@@ -1,0 +1,42 @@
+.flights {
+  &-table {
+    &-buttons {
+      background-color: #1eb7ee;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: center;
+      text-decoration: none;
+      border-top-right-radius: 50px;
+      border-top-left-radius: 50px;
+      margin-bottom: 11px;
+    }
+    &-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      height: 65px;
+      width: 50%;
+      font-size: 20px;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+      text-decoration: none;
+      background-color: transparent;
+      color: white;
+    }
+    &-button .fa-sharp {
+      color: white;
+    }
+    &-button:hover {
+      filter: blur(0px);
+    }
+  }
+}
+.activeBtn {
+  color: #50c4ee;
+  background-color: white;
+}
+.activeBtn .fa-sharp {
+  color: #50c4ee;
+}

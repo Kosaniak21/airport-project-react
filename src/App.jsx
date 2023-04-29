@@ -1,19 +1,32 @@
-import React from "react";
-import { Provider } from "react-redux";
-import store from "./store";
-// import Search from "./features/flights/components/search/Search";
-import Footer from "./features/flights/components/footer/Footer";
-import Header from "./features/flights/components/header/Header";
+import React, { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home.jsx';
+import Flight from './pages/Flight.jsx';
+import NoMatch from './pages/NoMatch.jsx';
+import Layout from './pages/Layout.jsx';
+import { useLocation } from 'react-router-dom';
 
-const App = () => (
-  <Provider store={store}>
-    <Header />
-    {/* <div className="search-flights">
-      <Search />
-    </div> */}
+const titles = {
+  '/': `Аєропорт "Київ"`,
+  '/departure': `Розклад аєропорт "Київ"`,
+  '/arrival': `Розклад аєропорт "Київ"`,
+};
+const App = () => {
+  const location = useLocation();
+  useEffect(() => {
+    document.title = titles[location.pathname] ?? 'Airport Kiev';
+  }, [location]);
 
-    {/* <Footer /> */}
-  </Provider>
-);
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="departure" element={<Flight />} />
+        <Route path="arrival" element={<Flight />} />
+        <Route path="*" element={<NoMatch />} />
+      </Route>
+    </Routes>
+  );
+};
 
 export default App;

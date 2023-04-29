@@ -5,15 +5,32 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   background-color: #e7efec;
   color: #2f2f2f;
   padding-top: 92px;
+  scroll-behavior: smooth;
   height: 100%;
 }
 
 #root {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   min-height: 100vh;
+}
+@media (max-width: 1095px) {
+  body {
+    padding-top: 78px;
+  }
+}
+@media (max-width: 1001px) {
+  body {
+    padding-top: 70px;
+  }
+}
+@media (max-width: 776px) {
+  body {
+    padding-top: 63px;
+  }
 }

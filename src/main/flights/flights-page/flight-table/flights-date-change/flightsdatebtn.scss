@@ -1,0 +1,28 @@
+.flights {
+  &-table {
+    &-days {
+      display: flex;
+      flex-direction: row;
+    }
+    &-daylink {
+      background-color: white;
+      border: none;
+      color: #d0d0d0;
+      text-decoration: none;
+      text-align: center;
+      padding: 10px 10px;
+      width: 90px;
+      font-size: 12px;
+      font-weight: bolder;
+      border-bottom: 4px solid #d0d0d0;
+    }
+    &-daylink p {
+      margin-top: 5px;
+      font-size: 15px;
+    }
+  }
+}
+.active-Date {
+  border-bottom: #1eb7ee 4px solid;
+  color: #1eb7ee;
+}

@@ -1,0 +1,41 @@
+.flights {
+  &-table {
+    margin-top: 35px;
+    margin-bottom: 50px;
+    background-color: white;
+    height: 100%;
+    width: 1290px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    &-date {
+      width: 500px;
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      margin: 27px 30px;
+    }
+    &-days {
+      display: flex;
+      flex-direction: row;
+      color: #d0d0d0;
+    }
+    &-daylink {
+      background-color: white;
+      border: none;
+      text-decoration: none;
+      text-align: center;
+      padding: 10px 10px;
+      width: 85px;
+      font-size: 12px;
+      font-weight: bolder;
+      border-bottom: 2px solid #d0d0d0;
+    }
+    &-daylink p {
+      margin-top: 5px;
+      font-size: 14px;
+    }
+  }
+}
+.active-Btn {
+  background-color: black;
+}
