@@ -9,11 +9,11 @@ This is a web application that displays flights from an API and allows the user 
 To run the project, follow these steps:\_\_
 \_\_
 \_\_1.Clone the repository: git clone https://github.com/Kosaniak21/todo-list.git
-2.Navigate to the project directory: cd todo-list
-3.Install dependencies: npm install
-4.Start the development server: npm start
-5.Open the application in a web browser at http://localhost:8080/
-6.To build the project for production, run npm run build and the output will be in the dist/ folder.
+**2.Navigate to the project directory: cd todo-list
+**3.Install dependencies: npm install
+**4.Start the development server: npm start
+**5.Open the application in a web browser at http://localhost:8080/
+\_\_6.To build the project for production, run npm run build and the output will be in the dist/ folder.
 
 ## Tech Staks:
 
