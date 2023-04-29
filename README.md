@@ -6,9 +6,9 @@ This is a web application that displays flights from an API and allows the user 
 
 ## Build Setup:
 
-To run the project, follow these steps:
-
-1.Clone the repository: git clone https://github.com/Kosaniak21/todo-list.git
+To run the project, follow these steps:\_\_
+\_\_
+\_\_1.Clone the repository: git clone https://github.com/Kosaniak21/todo-list.git
 2.Navigate to the project directory: cd todo-list
 3.Install dependencies: npm install
 4.Start the development server: npm start
