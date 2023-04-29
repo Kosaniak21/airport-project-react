@@ -6,14 +6,22 @@ This is a web application that displays flights from an API and allows the user 
 
 ## Build Setup:
 
-To run the project, follow these steps:<br />
-<br />
-<br />1.Clone the repository: git clone https://github.com/Kosaniak21/todo-list.git
-<br />2.Navigate to the project directory: cd todo-list
-<br />3.Install dependencies: npm install
-<br />4.Start the development server: npm start
-<br />5.Open the application in a web browser at http://localhost:8080/
-<br />6.To build the project for production, run npm run build and the output will be in the dist/ folder.
+```bash
+# Download repository:
+git clone https://github.com/Kosaniak21/airport-project-react.git
+
+# Go to the app:
+cd ariport-project-react
+
+# Install dependencies:
+npm install
+
+# Server with hot reload at http://localhost:8080/
+npm start
+
+# Output will be at dist/ folder
+npm run build
+```
 
 ## Tech Staks:
 
