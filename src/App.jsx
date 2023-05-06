@@ -7,7 +7,7 @@ import Layout from './pages/Layout.jsx';
 import { useLocation } from 'react-router-dom';
 
 const titles = {
-  '/': `Аєропорт "Київ"`,
+  '/': `Аеропорт "Київ"`,
   '/departure': `Розклад аєропорт "Київ"`,
   '/arrival': `Розклад аєропорт "Київ"`,
 };

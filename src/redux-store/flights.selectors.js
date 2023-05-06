@@ -3,12 +3,15 @@ import dayjs from 'dayjs';
 
 export const dateSelector = state => dayjs(new Date(state.flights.date));
 export const flightsListSelector = state => state.flights.flightsList;
+export const isPendingSelector = state => state.flights.pending;
 
 export const sortedFlightsListSelector = createSelector([flightsListSelector], flightsList => {
   return flightsList.toSorted((a, b) => {
-    // console.log(b.departureDateExpected, a.departureDateExpected);
+    let dateA = a.departureDateExpected === 0 ? a.departureDate : a.departureDateExpected;
+    let dateB = b.departureDateExpected === 0 ? b.departureDate : b.departureDateExpected;
     return (
-      new Date(b.departureDateExpected).getTime() - new Date(a.departureDateExpected).getTime()
+      new Date(dayjs(dateB, 'DD-MM-YYYY HH:mm:ss').format()).getTime() -
+      new Date(dayjs(dateA, 'DD-MM-YYYY HH:mm:ss').format()).getTime()
     );
   });
 });

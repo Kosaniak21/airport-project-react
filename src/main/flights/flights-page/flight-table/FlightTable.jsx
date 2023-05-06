@@ -1,15 +1,14 @@
 import React, { Suspense, lazy } from 'react';
-
+import PropTypes from 'prop-types';
 import MyDatePicker from '../../../../ui-elements/date-picker/MyDatePicker';
-import './flighttable.scss';
 import Spinner from '../../../../ui-elements/spinner/Spinner';
-
 import FlightsButton from './flights-buttons/FlightsButton';
 import FlightsDateBtn from './flights-date-change/FlightsDateBtn';
+import './flighttable.scss';
 
-const FlightsList = lazy(() => import('../flights-list/FlightsList'));
+const FlightsList = lazy(() => import('./flights-list/FlightsList'));
 
-const FlightsTable = ({ searchCity, search, direction }) => {
+const FlightsTable = ({ searchCity, searchDate, search, direction }) => {
   return (
     <div className="flights-table">
       <FlightsButton search={search} />
@@ -24,6 +23,7 @@ const FlightsTable = ({ searchCity, search, direction }) => {
             rowHeight={90}
             visibleRows={5}
             direction={direction}
+            searchDate={searchDate}
           />
         </Suspense>
       </div>
@@ -31,4 +31,9 @@ const FlightsTable = ({ searchCity, search, direction }) => {
   );
 };
 
+FlightsTable.propTypes = {
+  searchCity: PropTypes.string,
+  search: PropTypes.string,
+  direction: PropTypes.string.isRequired,
+};
 export default FlightsTable;

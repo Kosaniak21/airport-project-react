@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 module.exports = (env, argv) => {
   const isProd = argv.mode === 'production';
@@ -20,7 +21,7 @@ module.exports = (env, argv) => {
           use: [isProd ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader'],
         },
         {
-          test: /\.(png|svg|jpg|jpeg|gif|webp|ico)$/i,
+          test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
           type: 'asset/resource',
           generator: {
             filename: 'images/[name][ext]',
@@ -35,6 +36,9 @@ module.exports = (env, argv) => {
       new webpack.ProgressPlugin(),
       new HtmlWebpackPlugin({
         template: './src/index.html',
+      }),
+      new CopyPlugin({
+        patterns: [{ from: 'src/images/favicon.ico', to: 'images/favicon.ico' }],
       }),
     ],
     devServer: {

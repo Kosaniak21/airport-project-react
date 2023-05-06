@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import './flightsbutton.scss';
 const setActive = ({ isActive }) => {
@@ -15,6 +16,9 @@ const FlightsButton = ({ search }) => {
       </NavLink>
     </div>
   );
+};
+FlightsButton.propTypes = {
+  search: PropTypes.string,
 };
 
 export default FlightsButton;

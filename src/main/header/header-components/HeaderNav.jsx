@@ -1,4 +1,6 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Header from '../Header';
 
 const HeaderNav = ({ img, title, subtitle, btnText }) => {
   return (
@@ -9,6 +11,13 @@ const HeaderNav = ({ img, title, subtitle, btnText }) => {
       <a>{btnText}</a>
     </nav>
   );
+};
+
+HeaderNav.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  btnText: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
 };
 
 export default HeaderNav;

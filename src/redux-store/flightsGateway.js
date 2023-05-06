@@ -11,7 +11,7 @@ export const fetchFlightsList = direction =>
     .then(flightsData =>
       flightsData
         .filter(flight =>
-          direction === 'departure' ? flight.status === 'DP' : flight.status === 'AR',
+          direction === 'departure' ? flight.type === 'DEPARTURE' : flight.type === 'ARRIVAL',
         )
         .map(flight => {
           return getDirectionFlights(flight);

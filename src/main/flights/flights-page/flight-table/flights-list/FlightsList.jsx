@@ -1,16 +1,36 @@
 import React, { memo, useState, useEffect, useRef } from 'react';
-
-import './flightslist.scss';
 import { useSelector } from 'react-redux';
-import { sortedFlightsListSelector } from '../../../../redux-store/flights.selectors';
+import {
+  isPendingSelector,
+  sortedFlightsListSelector,
+} from '../../../../../redux-store/flights.selectors';
+import dayjs from 'dayjs';
+import PropTypes from 'prop-types';
+import './flightslist.scss';
+import { isPending } from './../../../../../redux-store/flights.actions';
 
-const FlightsList = ({ rowHeight, visibleRows, searchCity, direction }) => {
+const FlightsList = ({ rowHeight, visibleRows, searchCity, direction, searchDate }) => {
   const refUl = useRef();
   const [start, setStart] = useState(0);
-
+  const isPending = useSelector(state => isPendingSelector(state));
   const flights = useSelector(state => {
     const sortedFlights = sortedFlightsListSelector(state);
-    console.log(direction);
+    // console.log(sortedFlights);
+    // .filter(flight => {
+    //   console.log(dayjs(flight.arrivalDateExpected, 'DD-MM-YYYY'));
+    //   // console.log(new Date(flight.arrivalDateExpected));
+    //   console.log(dayjs(searchDate).isSame(dayjs(flight.arrivalDateExpected, 'DD-MM-YYYY'), 'day'));
+    //   if (direction === 'arrival') {
+    //     flight.arrivalDateExpected !== 0
+    //       ? flight.arrivalDateExpected === searchDate
+    //       : flight.arrivalDate === searchDate;
+    //   }
+    //   if (direction === 'departure') {
+    //     flight.departureDateExpected !== 0
+    //       ? flight.departureDateExpected === searchDate
+    //       : flight.departureDate === searchDate;
+    //   }
+    // });
     if (searchCity) {
       return sortedFlights.filter(el =>
         direction === 'arrival'
@@ -21,7 +41,7 @@ const FlightsList = ({ rowHeight, visibleRows, searchCity, direction }) => {
       return sortedFlights;
     }
   });
-  console.log(flights);
+
   function getTopHeight() {
     return rowHeight * start;
   }
@@ -46,7 +66,6 @@ const FlightsList = ({ rowHeight, visibleRows, searchCity, direction }) => {
       }
     };
   }, [flights.length, visibleRows, rowHeight]);
-
   return (
     <div className="flights-list">
       <div className="flights-list-titles">
@@ -61,7 +80,7 @@ const FlightsList = ({ rowHeight, visibleRows, searchCity, direction }) => {
         <p>Статус</p>
       </div>
 
-      {flights.length === 0 ? (
+      {!isPending && flights.length === 0 ? (
         <h2 className="flights-list-without">Немає рейсів</h2>
       ) : (
         <ul
@@ -77,11 +96,11 @@ const FlightsList = ({ rowHeight, visibleRows, searchCity, direction }) => {
                 {el.airline.name}
               </span>
               <span>{el.arrivalCity}</span>
-              <span>{el.arrivalDate}</span>
-              <span>{el.arrivalDateExpected}</span>
+              <span>{el.arrivalDate || '-'}</span>
+              <span>{el.arrivalDateExpected || '-'}</span>
               <span>{el.departureCity}</span>
-              <span>{el.departureDate}</span>
-              <span>{el.departureDateExpected}</span>
+              <span>{el.departureDate || '-'}</span>
+              <span>{el.departureDateExpected || '-'}</span>
               <span>{el.terminal}</span>
               <span>{el.status}</span>
             </li>
@@ -92,4 +111,12 @@ const FlightsList = ({ rowHeight, visibleRows, searchCity, direction }) => {
     </div>
   );
 };
+
+FlightsList.propTypes = {
+  rowHeight: PropTypes.number.isRequired,
+  visibleRows: PropTypes.number.isRequired,
+  searchCity: PropTypes.string,
+  direction: PropTypes.string.isRequired,
+};
+
 export default memo(FlightsList);

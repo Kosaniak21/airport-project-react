@@ -42,9 +42,7 @@ const Header = () => {
               <div className="header-links--modal-links">
                 <div>
                   <p>Інформація</p>
-
                   <a>COVID-19</a>
-
                   <a>Напередодні вильоту</a>
                   <a>Авіабезпека</a>
                   <a>Митний контроль</a>

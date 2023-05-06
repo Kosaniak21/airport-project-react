@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { dateSelector } from '../../../../../redux-store/flights.selectors';
@@ -17,9 +18,7 @@ const FlightsDateBtn = ({ search, direction }) => {
   const formatedDateYesterday = dayjs(new Date()).subtract(1, 'day').format('DD/MM');
   const formatedDateTomorrow = dayjs(new Date()).add(1, 'day').format('DD/MM');
   const dispatch = useDispatch();
-
   const [selectedDate, setSelectedDate] = useState(date);
-
   useEffect(() => {
     if (selectedDate !== date) {
       dispatch(getDatePick(selectedDate.toISOString()));
@@ -60,5 +59,9 @@ const FlightsDateBtn = ({ search, direction }) => {
       </NavLink>
     </div>
   );
+};
+FlightsDateBtn.propTypes = {
+  search: PropTypes.string,
+  direction: PropTypes.string,
 };
 export default FlightsDateBtn;
