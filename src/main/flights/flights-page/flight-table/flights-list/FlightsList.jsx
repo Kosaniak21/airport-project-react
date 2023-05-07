@@ -7,41 +7,50 @@ import {
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import './flightslist.scss';
-import { isPending } from './../../../../../redux-store/flights.actions';
 
 const FlightsList = ({ rowHeight, visibleRows, searchCity, direction, searchDate }) => {
   const refUl = useRef();
   const [start, setStart] = useState(0);
   const isPending = useSelector(state => isPendingSelector(state));
+
   const flights = useSelector(state => {
     const sortedFlights = sortedFlightsListSelector(state);
-    // console.log(sortedFlights);
-    // .filter(flight => {
-    //   console.log(dayjs(flight.arrivalDateExpected, 'DD-MM-YYYY'));
-    //   // console.log(new Date(flight.arrivalDateExpected));
-    //   console.log(dayjs(searchDate).isSame(dayjs(flight.arrivalDateExpected, 'DD-MM-YYYY'), 'day'));
-    //   if (direction === 'arrival') {
-    //     flight.arrivalDateExpected !== 0
-    //       ? flight.arrivalDateExpected === searchDate
-    //       : flight.arrivalDate === searchDate;
-    //   }
-    //   if (direction === 'departure') {
-    //     flight.departureDateExpected !== 0
-    //       ? flight.departureDateExpected === searchDate
-    //       : flight.departureDate === searchDate;
-    //   }
-    // });
     if (searchCity) {
       return sortedFlights.filter(el =>
         direction === 'arrival'
           ? el.departureCity.toLowerCase().includes(searchCity.toLowerCase())
           : el.arrivalCity.toLowerCase().includes(searchCity.toLowerCase()),
       );
+    }
+    if (searchDate !== '') {
+      return sortedFlights.filter(flight => {
+        if (direction === 'arrival') {
+          return flight.arrivalDateExpected !== 0
+            ? dayjs(searchDate, 'DD.MM.YYYY').isSame(
+                dayjs(flight.arrivalDateExpected, 'DD-MM-YYYY'),
+                'day',
+              )
+            : dayjs(searchDate, 'DD.MM.YYYY').isSame(
+                dayjs(flight.arrivalDate, 'DD-MM-YYYY'),
+                'day',
+              );
+        }
+        if (direction === 'departure') {
+          return flight.departureDateExpected !== 0
+            ? dayjs(searchDate, 'DD.MM.YYYY').isSame(
+                dayjs(flight.departureDateExpected, 'DD-MM-YYYY'),
+                'day',
+              )
+            : dayjs(searchDate, 'DD.MM.YYYY').isSame(
+                dayjs(flight.departureDate, 'DD-MM-YYYY'),
+                'day',
+              );
+        }
+      });
     } else {
       return sortedFlights;
     }
   });
-
   function getTopHeight() {
     return rowHeight * start;
   }
@@ -67,19 +76,7 @@ const FlightsList = ({ rowHeight, visibleRows, searchCity, direction, searchDate
     };
   }, [flights.length, visibleRows, rowHeight]);
   return (
-    <div className="flights-list">
-      <div className="flights-list-titles">
-        <p>Імя авіалінії</p>
-        <p>Відправлення</p>
-        <p>Дата відправлення</p>
-        <p>Очікувана дата вильоту</p>
-        <p>Прибуття</p>
-        <p>Дата прибуття</p>
-        <p>Очікувана дата прибуття</p>
-        <p>Термінал</p>
-        <p>Статус</p>
-      </div>
-
+    <>
       {!isPending && flights.length === 0 ? (
         <h2 className="flights-list-without">Немає рейсів</h2>
       ) : (
@@ -108,7 +105,7 @@ const FlightsList = ({ rowHeight, visibleRows, searchCity, direction, searchDate
           <div style={{ height: getBottomHeight() }} />
         </ul>
       )}
-    </div>
+    </>
   );
 };
 

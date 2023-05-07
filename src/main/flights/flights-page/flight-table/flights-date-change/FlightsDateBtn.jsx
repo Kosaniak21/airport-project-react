@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { dateSelector } from '../../../../../redux-store/flights.selectors';
 import { getDatePick } from '../../../../../redux-store/flights.actions';
@@ -12,7 +10,7 @@ const setActive = ({ isActive }) => {
   return isActive ? 'flights-table-daylink active-Date' : 'flights-table-daylink';
 };
 
-const FlightsDateBtn = ({ search, direction }) => {
+const FlightsDateBtn = ({ searchDate, searchCity, direction }) => {
   const date = useSelector(state => dateSelector(state));
   const formatedDateToday = dayjs(new Date()).format('DD/MM');
   const formatedDateYesterday = dayjs(new Date()).subtract(1, 'day').format('DD/MM');
@@ -27,41 +25,41 @@ const FlightsDateBtn = ({ search, direction }) => {
 
   return (
     <div className="flights-table-days">
-      <NavLink
-        to={`/${direction}${search}`}
-        className={setActive}
-        onClick={() => {
-          setSelectedDate(dayjs().subtract(1, 'day'));
-        }}
-      >
+      <label className="flights-table-dayBtn">
+        <input
+          type="checkbox"
+          className={setActive}
+          onClick={() => {
+            setSelectedDate(dayjs().subtract(1, 'day'));
+          }}
+        />
         <span>{formatedDateYesterday}</span>
         <p>ВЧОРА</p>
-      </NavLink>
-      <NavLink
-        to={`/${direction}${search}`}
-        className={setActive}
-        onClick={() => {
-          setSelectedDate(dayjs());
-        }}
-      >
+      </label>
+      <label className="flights-table-dayBtn">
+        <input
+          type="checkbox"
+          className={setActive}
+          onClick={() => {
+            setSelectedDate(dayjs());
+          }}
+        />
         <span>{formatedDateToday}</span>
         <p>СЬОГОДНІ</p>
-      </NavLink>
-      <NavLink
-        to={`/${direction}${search}`}
-        className={setActive}
-        onClick={() => {
-          setSelectedDate(dayjs().add(1, 'day'));
-        }}
-      >
+      </label>
+      <label className="flights-table-dayBtn">
+        <input
+          type="checkbox"
+          className={setActive}
+          onClick={() => {
+            setSelectedDate(dayjs().add(1, 'day'));
+          }}
+        />
         <span>{formatedDateTomorrow}</span>
         <p>ЗАВТРА</p>
-      </NavLink>
+      </label>
     </div>
   );
 };
-FlightsDateBtn.propTypes = {
-  search: PropTypes.string,
-  direction: PropTypes.string,
-};
+
 export default FlightsDateBtn;

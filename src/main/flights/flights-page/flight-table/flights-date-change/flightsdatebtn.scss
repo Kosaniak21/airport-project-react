@@ -4,21 +4,24 @@
       display: flex;
       flex-direction: row;
     }
-    &-daylink {
+    &-dayBtn {
       background-color: white;
       border: none;
       color: #d0d0d0;
       text-decoration: none;
       text-align: center;
-      padding: 10px 10px;
+      padding: 8px 10px;
       width: 90px;
       font-size: 12px;
       font-weight: bolder;
       border-bottom: 4px solid #d0d0d0;
     }
-    &-daylink p {
+    &-dayBtn p {
       margin-top: 5px;
       font-size: 15px;
+    }
+    &-dayBtn input {
+      display: none;
     }
   }
 }

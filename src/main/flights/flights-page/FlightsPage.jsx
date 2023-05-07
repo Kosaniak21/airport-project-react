@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useLayoutEffect } from 'react';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { fetchPending, getFlightsList } from '../../../redux-store/flights.actions';
 import { dateSelector } from '../../../redux-store/flights.selectors';
@@ -13,7 +13,7 @@ const FlightsPage = () => {
   const { pathname, search } = useLocation();
   const direction = pathname.slice(1);
   const navigate = useNavigate();
-  const date = useSelector(state => dateSelector(state), shallowEqual);
+  const date = useSelector(state => dateSelector(state));
   const [prevDate, setPrevDate] = useState(date);
 
   function extractCity(searchQuery) {
@@ -37,7 +37,7 @@ const FlightsPage = () => {
   }, [direction, search]);
 
   useEffect(() => {
-    if (date !== prevDate) {
+    if (date.valueOf() !== prevDate.valueOf()) {
       navigate(
         `/${direction}?search=${extractCity(search)}&date=${dayjs(date).format('DD.MM.YYYY')}`,
       );

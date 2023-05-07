@@ -2,14 +2,11 @@ import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './searchform.scss';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import dayjs from 'dayjs';
 
 const SearchForm = ({ searchCity }) => {
   const inputRef = useRef();
   const [searchFlight, setSearchFlight] = useState(searchCity || '');
-  const date = dayjs(useSelector(state => state.flights.date)).format('DD.MM.YYYY');
-  const search = searchFlight ? `?search=${searchFlight}&date=${date}` : `?date=${date}`;
+  const search = searchFlight ? `?search=${searchFlight}` : ``;
 
   useEffect(() => {
     const inputEl = inputRef.current;
