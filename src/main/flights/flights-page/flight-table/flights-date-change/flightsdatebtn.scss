@@ -10,22 +10,29 @@
       color: #d0d0d0;
       text-decoration: none;
       text-align: center;
-      padding: 8px 10px;
       width: 90px;
-      font-size: 12px;
       font-weight: bolder;
-      border-bottom: 4px solid #d0d0d0;
     }
     &-dayBtn p {
+      display: flex;
+      flex-direction: column;
       margin-top: 5px;
       font-size: 15px;
+      padding-bottom: 4px;
+      border-bottom: #d0d0d0 4px solid;
+    }
+    &-dayBtn span {
+      font-size: 12px;
+      margin-top: 10px;
+      margin-bottom: 5px;
     }
     &-dayBtn input {
       display: none;
     }
   }
 }
-.active-Date {
+
+.flights-table-days input[type='checkbox']:checked + p {
   border-bottom: #1eb7ee 4px solid;
   color: #1eb7ee;
 }

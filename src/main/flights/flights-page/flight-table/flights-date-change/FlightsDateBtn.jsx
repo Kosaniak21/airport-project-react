@@ -6,58 +6,51 @@ import dayjs from 'dayjs';
 
 import './flightsdatebtn.scss';
 
-const setActive = ({ isActive }) => {
-  return isActive ? 'flights-table-daylink active-Date' : 'flights-table-daylink';
-};
-
-const FlightsDateBtn = ({ searchDate, searchCity, direction }) => {
+const FlightsDateBtn = () => {
   const date = useSelector(state => dateSelector(state));
-  const formatedDateToday = dayjs(new Date()).format('DD/MM');
-  const formatedDateYesterday = dayjs(new Date()).subtract(1, 'day').format('DD/MM');
-  const formatedDateTomorrow = dayjs(new Date()).add(1, 'day').format('DD/MM');
   const dispatch = useDispatch();
-  const [selectedDate, setSelectedDate] = useState(date);
+
+  const [dates, setDates] = useState([
+    {
+      date: dayjs().subtract(1, 'day'),
+      isActive: false,
+    },
+    {
+      date: dayjs(),
+      isActive: false,
+    },
+    {
+      date: dayjs().add(1, 'day'),
+      isActive: false,
+    },
+  ]);
+
   useEffect(() => {
-    if (selectedDate !== date) {
+    const selectedDate = dates.find(date => date.isActive)?.date;
+    if (selectedDate && selectedDate !== date) {
       dispatch(getDatePick(selectedDate.toISOString()));
     }
-  }, [selectedDate]);
+  }, [dates]);
+
+  const handleDateChange = index => {
+    const newDates = dates.map((date, i) => ({
+      ...date,
+      isActive: index === i,
+    }));
+    setDates(newDates);
+  };
 
   return (
     <div className="flights-table-days">
-      <label className="flights-table-dayBtn">
-        <input
-          type="checkbox"
-          className={setActive}
-          onClick={() => {
-            setSelectedDate(dayjs().subtract(1, 'day'));
-          }}
-        />
-        <span>{formatedDateYesterday}</span>
-        <p>ВЧОРА</p>
-      </label>
-      <label className="flights-table-dayBtn">
-        <input
-          type="checkbox"
-          className={setActive}
-          onClick={() => {
-            setSelectedDate(dayjs());
-          }}
-        />
-        <span>{formatedDateToday}</span>
-        <p>СЬОГОДНІ</p>
-      </label>
-      <label className="flights-table-dayBtn">
-        <input
-          type="checkbox"
-          className={setActive}
-          onClick={() => {
-            setSelectedDate(dayjs().add(1, 'day'));
-          }}
-        />
-        <span>{formatedDateTomorrow}</span>
-        <p>ЗАВТРА</p>
-      </label>
+      {dates.map((date, index) => (
+        <label key={index} className="flights-table-dayBtn">
+          <input type="checkbox" onChange={() => handleDateChange(index)} checked={date.isActive} />
+          <p>
+            <span>{date.date.format('DD/MM')}</span>
+            {index === 0 ? 'ВЧОРА' : index === 1 ? 'СЬОГОДНІ' : 'ЗАВТРА'}
+          </p>
+        </label>
+      ))}
     </div>
   );
 };
