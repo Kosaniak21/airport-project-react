@@ -26,6 +26,7 @@ export const flightsReducer = (state = initialState, action) => {
         pending: true,
       };
     }
+
     default:
       return state;
   }

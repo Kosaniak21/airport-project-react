@@ -9,7 +9,6 @@ import './flightsdatebtn.scss';
 const FlightsDateBtn = () => {
   const date = useSelector(state => dateSelector(state));
   const dispatch = useDispatch();
-
   const [dates, setDates] = useState([
     {
       date: dayjs().subtract(1, 'day'),
@@ -39,7 +38,6 @@ const FlightsDateBtn = () => {
     }));
     setDates(newDates);
   };
-
   return (
     <div className="flights-table-days">
       {dates.map((date, index) => (

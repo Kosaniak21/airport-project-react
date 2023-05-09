@@ -7,6 +7,7 @@ import {
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import './flightslist.scss';
+import FlightsListItem from './flights-list-items/FllightsListItem';
 
 const FlightsList = ({ rowHeight, visibleRows, searchCity, direction, searchDate }) => {
   const refUl = useRef();
@@ -14,16 +15,16 @@ const FlightsList = ({ rowHeight, visibleRows, searchCity, direction, searchDate
   const isPending = useSelector(state => isPendingSelector(state));
 
   const flights = useSelector(state => {
-    const sortedFlights = sortedFlightsListSelector(state);
+    let sortedFlights = sortedFlightsListSelector(state);
     if (searchCity) {
-      return sortedFlights.filter(el =>
+      sortedFlights = sortedFlights.filter(el =>
         direction === 'arrival'
           ? el.departureCity.toLowerCase().includes(searchCity.toLowerCase())
           : el.arrivalCity.toLowerCase().includes(searchCity.toLowerCase()),
       );
     }
     if (searchDate !== '') {
-      return sortedFlights.filter(flight => {
+      sortedFlights = sortedFlights.filter(flight => {
         if (direction === 'arrival') {
           return flight.arrivalDateExpected !== 0
             ? dayjs(searchDate, 'DD.MM.YYYY').isSame(
@@ -50,6 +51,7 @@ const FlightsList = ({ rowHeight, visibleRows, searchCity, direction, searchDate
     } else {
       return sortedFlights;
     }
+    return sortedFlights;
   });
   function getTopHeight() {
     return rowHeight * start;
@@ -86,21 +88,8 @@ const FlightsList = ({ rowHeight, visibleRows, searchCity, direction, searchDate
           style={{ height: rowHeight * visibleRows + 1, overflowY: 'scroll' }}
         >
           <div style={{ height: getTopHeight() }} />
-          {flights.slice(start, start + visibleRows + 1).map(el => (
-            <li key={el.id} className="flights-list-item">
-              <span>
-                <img src={el.airline.logo} alt="logo-airline" />
-                {el.airline.name}
-              </span>
-              <span>{el.arrivalCity}</span>
-              <span>{el.arrivalDate || '-'}</span>
-              <span>{el.arrivalDateExpected || '-'}</span>
-              <span>{el.departureCity}</span>
-              <span>{el.departureDate || '-'}</span>
-              <span>{el.departureDateExpected || '-'}</span>
-              <span>{el.terminal}</span>
-              <span>{el.status}</span>
-            </li>
+          {flights.slice(start, start + visibleRows + 1).map(elProps => (
+            <FlightsListItem props={elProps} key={elProps.id} />
           ))}
           <div style={{ height: getBottomHeight() }} />
         </ul>
@@ -114,6 +103,7 @@ FlightsList.propTypes = {
   visibleRows: PropTypes.number.isRequired,
   searchCity: PropTypes.string,
   direction: PropTypes.string.isRequired,
+  searchDate: PropTypes.string,
 };
 
 export default memo(FlightsList);

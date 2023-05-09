@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { fetchPending, getFlightsList } from '../../../redux-store/flights.actions';
-import { dateSelector } from '../../../redux-store/flights.selectors';
+import { dateSelector, dateChecker } from '../../../redux-store/flights.selectors';
 import SearchForm from '../../search/SearchForm';
 import FlightTable from './flight-table/FlightTable';
 import './flightspage.scss';
@@ -15,7 +15,6 @@ const FlightsPage = () => {
   const navigate = useNavigate();
   const date = useSelector(state => dateSelector(state));
   const [prevDate, setPrevDate] = useState(date);
-
   function extractCity(searchQuery) {
     const params = new URLSearchParams(searchQuery);
     const cityName = params.get('search');

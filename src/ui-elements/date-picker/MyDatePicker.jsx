@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDatePick } from './../../redux-store/flights.actions';
 import { dateSelector } from '../../redux-store/flights.selectors';
