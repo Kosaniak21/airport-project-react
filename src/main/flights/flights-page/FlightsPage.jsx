@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { fetchPending, getFlightsList } from '../../../redux-store/flights.actions';
-import { dateSelector, dateChecker } from '../../../redux-store/flights.selectors';
+import useLocalStorage from '../../../hooks/useLocalStorage';
+import { dateSelector } from '../../../redux-store/flights.selectors';
 import SearchForm from '../../search/SearchForm';
 import FlightTable from './flight-table/FlightTable';
 import './flightspage.scss';
@@ -15,6 +16,8 @@ const FlightsPage = () => {
   const navigate = useNavigate();
   const date = useSelector(state => dateSelector(state));
   const [prevDate, setPrevDate] = useState(date);
+  const [dateCheckToLocalStorage, setDateCheckToLocalStorage] = useLocalStorage('dateCheck', false);
+
   function extractCity(searchQuery) {
     const params = new URLSearchParams(searchQuery);
     const cityName = params.get('search');
@@ -36,13 +39,13 @@ const FlightsPage = () => {
   }, [direction, search]);
 
   useEffect(() => {
-    if (date.valueOf() !== prevDate.valueOf()) {
+    if (date.valueOf() !== prevDate.valueOf() && dateCheckToLocalStorage) {
       navigate(
         `/${direction}?search=${extractCity(search)}&date=${dayjs(date).format('DD.MM.YYYY')}`,
       );
       setPrevDate(date);
     }
-  }, [date, prevDate, direction, search]);
+  }, [date, prevDate, direction, search, dateCheckToLocalStorage]);
 
   return (
     <div className="flights-container">

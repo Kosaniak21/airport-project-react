@@ -5,29 +5,43 @@ import { getDatePick } from '../../../../../redux-store/flights.actions';
 import dayjs from 'dayjs';
 
 import './flightsdatebtn.scss';
+import useLocalStorage from '../../../../../hooks/useLocalStorage';
 
 const FlightsDateBtn = () => {
   const date = useSelector(state => dateSelector(state));
   const dispatch = useDispatch();
-  const [dates, setDates] = useState([
-    {
-      date: dayjs().subtract(1, 'day'),
-      isActive: false,
-    },
-    {
-      date: dayjs(),
-      isActive: false,
-    },
-    {
-      date: dayjs().add(1, 'day'),
-      isActive: false,
-    },
-  ]);
+  const [dateCheckToLocalStorage, setDateCheckToLocalStorage] = useLocalStorage('dateCheck');
+  const [dateBtnToLocalStorage, setDatesBtnToLocalStorage] = useLocalStorage('datesBtn');
+
+  const [dates, setDates] = useState(() => {
+    if (dateBtnToLocalStorage && dateCheckToLocalStorage) {
+      return dateBtnToLocalStorage.map(savedDate => ({
+        date: dayjs(savedDate.date),
+        isActive: savedDate.isActive,
+      }));
+    } else {
+      return [
+        {
+          date: dayjs().subtract(1, 'day'),
+          isActive: false,
+        },
+        {
+          date: dayjs(),
+          isActive: false,
+        },
+        {
+          date: dayjs().add(1, 'day'),
+          isActive: false,
+        },
+      ];
+    }
+  });
 
   useEffect(() => {
     const selectedDate = dates.find(date => date.isActive)?.date;
     if (selectedDate && selectedDate !== date) {
       dispatch(getDatePick(selectedDate.toISOString()));
+      setDateCheckToLocalStorage(true);
     }
   }, [dates]);
 
@@ -38,6 +52,11 @@ const FlightsDateBtn = () => {
     }));
     setDates(newDates);
   };
+
+  useEffect(() => {
+    setDatesBtnToLocalStorage(dates);
+  }, [dates]);
+
   return (
     <div className="flights-table-days">
       {dates.map((date, index) => (
@@ -52,5 +71,4 @@ const FlightsDateBtn = () => {
     </div>
   );
 };
-
 export default FlightsDateBtn;

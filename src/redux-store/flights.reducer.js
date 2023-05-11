@@ -1,4 +1,4 @@
-import { FETCH_FLIGHTS_LIST, DATE_PICK, FETCH_PENDING } from './flights.actions';
+import { FETCH_FLIGHTS_LIST, DATE_PICK, FETCH_PENDING, DATE_CHECKER } from './flights.actions';
 
 const initialState = {
   flightsList: [],
@@ -26,7 +26,6 @@ export const flightsReducer = (state = initialState, action) => {
         pending: true,
       };
     }
-
     default:
       return state;
   }
