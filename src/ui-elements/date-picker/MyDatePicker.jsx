@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDatePick } from './../../redux-store/flights.actions';
+import { dateChecker, getDatePick } from './../../redux-store/flights.actions';
 import { dateSelector } from '../../redux-store/flights.selectors';
 import dayjs from 'dayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
@@ -11,6 +11,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { lightBlue } from '@mui/material/colors';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 const theme = createTheme({
   palette: {
@@ -23,10 +24,13 @@ const theme = createTheme({
 
 dayjs.extend(customParseFormat);
 export default function MyDatePicker({ searchDate }) {
+  const [dateCheckToLocalStorage, setDateCheckToLocalStorage] = useLocalStorage('dateCheck', null);
+
   const date = useSelector(state => dateSelector(state));
   const dispatch = useDispatch();
   const handleDateChange = date => {
     dispatch(getDatePick(date.toISOString()));
+    setDateCheckToLocalStorage(true);
   };
 
   return (

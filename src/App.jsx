@@ -1,12 +1,13 @@
 import React, { useEffect, useLayoutEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDatePick } from './redux-store/flights.actions.js';
-import { dateSelector } from './redux-store/flights.selectors.js';
+import { dateChecker, getDatePick } from './redux-store/flights.actions.js';
+import { dateSelector, isDateCheckedSelector } from './redux-store/flights.selectors.js';
 import Home from './pages/Home.jsx';
 import Flight from './pages/Flight.jsx';
 import NoMatch from './pages/NoMatch.jsx';
 import Layout from './pages/Layout.jsx';
+import useLocalStorage from './hooks/useLocalStorage.js';
 
 const titles = {
   '/': `Аеропорт "Київ"`,
@@ -14,6 +15,8 @@ const titles = {
   '/arrival': `Розклад аєропорт "Київ"`,
 };
 const App = () => {
+  const [dateToLocalStorage, setDateToLocalStorage] = useLocalStorage('date');
+  const [dateCheckToLocalStorage, setDateCheckToLocalStorage] = useLocalStorage('dateCheck', false);
   const location = useLocation();
   useEffect(() => {
     document.title = titles[location.pathname] ?? 'Airport Kiev';
@@ -21,25 +24,24 @@ const App = () => {
 
   const dispatch = useDispatch();
 
-  useLayoutEffect(() => {
-    const savedDate = JSON.parse(localStorage.getItem('date'));
-    if (savedDate) {
-      dispatch(getDatePick(savedDate));
+  useEffect(() => {
+    if (dateToLocalStorage) {
+      dispatch(getDatePick(dateToLocalStorage));
     }
-  }, [dispatch]);
+  }, [dispatch, dateToLocalStorage]);
 
   const date = useSelector(state => dateSelector(state));
 
   useEffect(() => {
     const handleBeforeUnload = () => {
-      localStorage.setItem('date', JSON.stringify(date));
+      setDateToLocalStorage(date);
     };
 
     window.addEventListener('beforeunload', handleBeforeUnload);
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
-  }, [date]);
+  }, [date, setDateToLocalStorage]);
 
   return (
     <Routes>
