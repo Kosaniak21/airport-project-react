@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from '../main/main/Main';
+import Main from '../components/main/Main';
 
 const Home = () => {
   return (
