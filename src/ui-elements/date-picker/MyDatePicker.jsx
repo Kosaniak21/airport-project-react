@@ -11,7 +11,6 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { lightBlue } from '@mui/material/colors';
-import useLocalStorage from '../../hooks/useLocalStorage';
 
 const theme = createTheme({
   palette: {
@@ -23,9 +22,7 @@ const theme = createTheme({
 });
 
 dayjs.extend(customParseFormat);
-export default function MyDatePicker({ searchDate }) {
-  const [dateCheckToLocalStorage, setDateCheckToLocalStorage] = useLocalStorage('dateCheck', null);
-
+export default function MyDatePicker({ searchDate, setDateCheckToLocalStorage }) {
   const date = useSelector(state => dateSelector(state));
   const dispatch = useDispatch();
   const handleDateChange = date => {

@@ -16,7 +16,6 @@ const titles = {
 };
 const App = () => {
   const [dateToLocalStorage, setDateToLocalStorage] = useLocalStorage('date');
-  const [dateCheckToLocalStorage, setDateCheckToLocalStorage] = useLocalStorage('dateCheck', false);
   const location = useLocation();
   useEffect(() => {
     document.title = titles[location.pathname] ?? 'Airport Kiev';

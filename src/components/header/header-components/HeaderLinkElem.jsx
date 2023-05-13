@@ -18,7 +18,7 @@ const HeaderLinkElem = React.memo(({ labelText, activeCheckbox, handleCheckboxCh
 
 HeaderLinkElem.propTypes = {
   labelText: PropTypes.string.isRequired,
-  activeCheckbox: PropTypes.func,
+  activeCheckbox: PropTypes.string,
   handleCheckboxChange: PropTypes.func.isRequired,
   idNum: PropTypes.string.isRequired,
 };
