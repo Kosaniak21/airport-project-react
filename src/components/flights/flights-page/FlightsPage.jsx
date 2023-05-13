@@ -55,6 +55,8 @@ const FlightsPage = () => {
         searchDate={extractDate(search)}
         search={search}
         direction={direction}
+        setDateCheckToLocalStorage={setDateCheckToLocalStorage}
+        dateCheckToLocalStorage={dateCheckToLocalStorage}
       />
     </div>
   );
