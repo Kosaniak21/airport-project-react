@@ -4,6 +4,8 @@
 
 This is a web application that displays flights from an API and allows the user to filter them by various criteria. It is built using React, Redux, and React Router.
 
+LIVE DEMO - https://airport-react-project.netlify.app/
+
 ## Build Setup:
 
 ```bash
