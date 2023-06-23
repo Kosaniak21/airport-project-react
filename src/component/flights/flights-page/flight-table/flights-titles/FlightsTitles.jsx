@@ -3,6 +3,7 @@ import './flightstitles.scss';
 const FlightsTitles = () => (
   <div className="flights-table-titles">
     <p>Імя авіалінії</p>
+    <p>Номер рейсу</p>
     <p>Відправлення</p>
     <p>Дата вильоту</p>
     <p>Очікувана дата вильоту</p>

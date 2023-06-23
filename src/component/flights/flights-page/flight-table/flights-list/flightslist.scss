@@ -25,16 +25,19 @@
   }
   &-item span:nth-child(1) {
     width: 19%;
-    border-left: 1px solid #d0d0d0;
     justify-content: space-between;
-    padding-right: 7px;
+    padding-right: 3px;
   }
-  &-item span:nth-child(8) {
-    font-size: 23px;
+  &-item span:nth-child(2) {
+    font-size: 22px;
     font-weight: 500;
   }
   &-item span:nth-child(9) {
-    font-size: 23px;
+    font-size: 22px;
+    font-weight: 500;
+  }
+  &-item span:nth-child(10) {
+    font-size: 22px;
     font-weight: 500;
   }
   &-item img {

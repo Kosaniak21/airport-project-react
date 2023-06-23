@@ -9,19 +9,18 @@ import PropTypes from 'prop-types';
 import './flightslist.scss';
 import FlightsListItem from './flights-list-items/FllightsListItem';
 
-const FlightsList = ({ rowHeight, visibleRows, searchCity, direction, searchDate }) => {
+const FlightsList = ({ rowHeight, visibleRows, searchNumber, direction, searchDate }) => {
   const refUl = useRef();
   const [start, setStart] = useState(0);
   const isPending = useSelector(state => isPendingSelector(state));
 
   const flights = useSelector(state => {
     let sortedFlights = sortedFlightsListSelector(state);
-    if (searchCity) {
-      sortedFlights = sortedFlights.filter(el =>
-        direction === 'arrival'
-          ? el.departureCity.toLowerCase().includes(searchCity.toLowerCase())
-          : el.arrivalCity.toLowerCase().includes(searchCity.toLowerCase()),
-      );
+    if (searchNumber) {
+      sortedFlights = sortedFlights.filter(el => {
+        console.log(el, el.codeShare, searchNumber);
+        return el.number === searchNumber;
+      });
     }
     if (searchDate !== '') {
       sortedFlights = sortedFlights.filter(flight => {
