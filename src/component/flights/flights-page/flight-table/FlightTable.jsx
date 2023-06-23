@@ -9,12 +9,11 @@ import FlightsTitles from './flights-titles/FlightsTitles';
 const FlightsList = lazy(() => import('./flights-list/FlightsList'));
 
 const FlightsTable = ({
-  searchCity,
+  searchNumber,
   searchDate,
   search,
   direction,
   setDateCheckToLocalStorage,
-  dateCheckToLocalStorage,
 }) => {
   return (
     <div className="flights-table">
@@ -30,7 +29,7 @@ const FlightsTable = ({
           <FlightsTitles />
           <Suspense fallback={<Spinner />}>
             <FlightsList
-              searchCity={searchCity}
+              searchNumber={searchNumber}
               rowHeight={90}
               visibleRows={5}
               direction={direction}

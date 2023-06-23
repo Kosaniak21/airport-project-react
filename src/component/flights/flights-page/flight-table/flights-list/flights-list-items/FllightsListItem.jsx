@@ -12,6 +12,7 @@ const FlightsListItem = ({ props }) => {
     departureDateExpected,
     terminal,
     status,
+    number,
   } = props;
 
   return (
@@ -20,6 +21,7 @@ const FlightsListItem = ({ props }) => {
         <img src={airline.logo} alt="logo-airline" />
         {airline.name}
       </span>
+      <span>{number}</span>
       <span>{arrivalCity}</span>
       <span>{arrivalDate || '-'}</span>
       <span>{arrivalDateExpected || '-'}</span>

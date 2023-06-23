@@ -18,7 +18,7 @@ const FlightsPage = () => {
   const [prevDate, setPrevDate] = useState(date);
   const [dateCheckToLocalStorage, setDateCheckToLocalStorage] = useLocalStorage('dateCheck', false);
 
-  function extractCity(searchQuery) {
+  function extractNumber(searchQuery) {
     const params = new URLSearchParams(searchQuery);
     const cityName = params.get('search');
     return cityName ? cityName.trim() : '';
@@ -41,7 +41,7 @@ const FlightsPage = () => {
   useEffect(() => {
     if (date.valueOf() !== prevDate.valueOf() && dateCheckToLocalStorage) {
       navigate(
-        `/${direction}?search=${extractCity(search)}&date=${dayjs(date).format('DD.MM.YYYY')}`,
+        `/${direction}?search=${extractNumber(search)}&date=${dayjs(date).format('DD.MM.YYYY')}`,
       );
       setPrevDate(date);
     }
@@ -49,9 +49,9 @@ const FlightsPage = () => {
 
   return (
     <div className="flights-container">
-      <SearchForm searchCity={extractCity(search)} />
+      <SearchForm searchCity={extractNumber(search)} />
       <FlightTable
-        searchCity={extractCity(search)}
+        searchNumber={extractNumber(search)}
         searchDate={extractDate(search)}
         search={search}
         direction={direction}

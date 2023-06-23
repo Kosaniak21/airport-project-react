@@ -17,4 +17,7 @@ export const fetchFlightsList = direction =>
           return getDirectionFlights(flight);
         }),
     )
-    .catch(error => console.log(error.message));
+    .catch(error => {
+      console.log(error.message);
+      throw new Error('Помилка при отриманні списку рейсів');
+    });

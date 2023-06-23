@@ -24,6 +24,7 @@ export const getDirectionFlights = flight => {
     departureDate: formatedDateDep,
     arrivalDateExpected: formatedDateArrExp,
     departureDateExpected: formatedDateDepExp,
+    number: flight.codeShare,
     airline: {
       logo: flight.airlineLogo,
       name: airlineName,

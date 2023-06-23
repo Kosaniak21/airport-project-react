@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import './searchform.scss';
 import { Link } from 'react-router-dom';
 
-const SearchForm = ({ searchCity }) => {
+const SearchForm = ({ searchNumber }) => {
   const inputRef = useRef();
-  const [searchFlight, setSearchFlight] = useState(searchCity || '');
+  const [searchFlight, setSearchFlight] = useState(searchNumber || '');
   const search = searchFlight ? `?search=${searchFlight}` : ``;
 
   useEffect(() => {
     const inputEl = inputRef.current;
     if (inputEl) {
-      if (searchCity) {
-        inputEl.value = searchCity;
+      if (searchNumber) {
+        inputEl.value = searchNumber;
         inputEl.placeholder = '';
       }
       inputEl.addEventListener('input', () => {
@@ -34,7 +34,7 @@ const SearchForm = ({ searchCity }) => {
         <input
           className="search-form-input"
           type="text"
-          placeholder={searchCity ? '' : 'Номер рейсу або місто'}
+          placeholder={searchNumber ? '' : 'Номер рейсу або місто'}
           ref={inputRef}
         />
         <Link to={`/departure${search}`} className="search-form-btn">
@@ -46,6 +46,6 @@ const SearchForm = ({ searchCity }) => {
 };
 
 SearchForm.propTypes = {
-  searchCity: PropTypes.string,
+  searchNumber: PropTypes.string,
 };
 export default SearchForm;
