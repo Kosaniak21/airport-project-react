@@ -24,17 +24,17 @@ const SearchForm = ({ searchNumber }) => {
         });
       };
     }
-  }, []);
+  }, [searchNumber]);
 
   return (
     <div className="search-form">
       <h1>ПОШУК РЕЙСУ</h1>
       <div className="search-form-block">
-        <i className="fa-solid fa-magnifying-glass"></i>
+        <i className="fa-solid fa-magnifying-glass" />
         <input
           className="search-form-input"
           type="text"
-          placeholder={searchNumber ? '' : 'Номер рейсу або місто'}
+          placeholder={searchNumber ? '' : 'Номер рейсу'}
           ref={inputRef}
         />
         <Link to={`/departure${search}`} className="search-form-btn">

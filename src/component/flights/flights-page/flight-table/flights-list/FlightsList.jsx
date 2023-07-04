@@ -1,11 +1,11 @@
 import React, { memo, useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import dayjs from 'dayjs';
 import {
   isPendingSelector,
   sortedFlightsListSelector,
 } from '../../../../../redux-store/flights.selectors';
-import dayjs from 'dayjs';
-import PropTypes from 'prop-types';
 import './flightslist.scss';
 import FlightsListItem from './flights-list-items/FllightsListItem';
 
@@ -18,7 +18,6 @@ const FlightsList = ({ rowHeight, visibleRows, searchNumber, direction, searchDa
     let sortedFlights = sortedFlightsListSelector(state);
     if (searchNumber) {
       sortedFlights = sortedFlights.filter(el => {
-        console.log(el, el.codeShare, searchNumber);
         return el.number === searchNumber;
       });
     }
