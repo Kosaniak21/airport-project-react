@@ -16,7 +16,6 @@ const FlightsPage = () => {
   const navigate = useNavigate();
   const date = useSelector(state => dateSelector(state));
   const [prevDate, setPrevDate] = useState(date);
-  const [dateCheckToLocalStorage, setDateCheckToLocalStorage] = useLocalStorage('dateCheck', false);
 
   function extractNumber(searchQuery) {
     const params = new URLSearchParams(searchQuery);
@@ -39,13 +38,13 @@ const FlightsPage = () => {
   }, [direction, search]);
 
   useEffect(() => {
-    if (date.valueOf() !== prevDate.valueOf() && dateCheckToLocalStorage) {
+    if (date.valueOf() !== prevDate.valueOf()) {
       navigate(
         `/${direction}?search=${extractNumber(search)}&date=${dayjs(date).format('DD.MM.YYYY')}`,
       );
       setPrevDate(date);
     }
-  }, [date, prevDate, direction, search, dateCheckToLocalStorage]);
+  }, [date, prevDate, direction, search]);
 
   return (
     <div className="flights-container">
@@ -55,8 +54,6 @@ const FlightsPage = () => {
         searchDate={extractDate(search)}
         search={search}
         direction={direction}
-        setDateCheckToLocalStorage={setDateCheckToLocalStorage}
-        dateCheckToLocalStorage={dateCheckToLocalStorage}
       />
     </div>
   );

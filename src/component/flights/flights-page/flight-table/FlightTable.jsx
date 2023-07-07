@@ -9,23 +9,14 @@ import FlightsTitles from './flights-titles/FlightsTitles';
 import { isPendingSelector } from '../../../../redux-store/flights.selectors';
 import FlightsList from './flights-list/FlightsList';
 
-const FlightsTable = ({
-  searchNumber,
-  searchDate,
-  search,
-  direction,
-  setDateCheckToLocalStorage,
-}) => {
+const FlightsTable = ({ searchNumber, searchDate, search, direction }) => {
   const isPending = useSelector(state => isPendingSelector(state));
 
   return (
     <div className="flights-table">
       <FlightsButton search={search} />
       <div className="flights-table-date">
-        <MyDatePicker
-          searchDate={searchDate}
-          setDateCheckToLocalStorage={setDateCheckToLocalStorage}
-        />
+        <MyDatePicker searchDate={searchDate} />
       </div>
       <div className="flights-table-data">
         <div className="flights-list">
