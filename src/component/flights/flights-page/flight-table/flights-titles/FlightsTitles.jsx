@@ -1,19 +1,21 @@
 import React from 'react';
 import './flightstitles.scss';
-const FlightsTitles = () => (
-  <div className="flights-table-titles">
-    <p>Імя авіалінії</p>
-    <p>Номер рейсу</p>
-    <p>Відправлення</p>
-    <p>Дата вильоту</p>
-    <p>Очікувана дата вильоту</p>
-    <p>Прибуття</p>
-    <p>Дата прибуття</p>
-    <p>Очікувана дата прибуття</p>
-    <p>Термінал</p>
-    <p>Статус</p>
-    <p>Купити</p>
-  </div>
-);
+import { PropTypes } from 'prop-types';
+const FlightsTitles = ({ direction }) => {
+  return (
+    <div className="flights-table-titles">
+      <p>Термінал</p>
+      <p>Розклад</p>
+      {direction === 'departure' ? <p>Призначення</p> : <p>Відправлення</p>}
+      <p>Статус</p>
+      <p>Авіакомпанія</p>
+      <p>Рейс</p>
+    </div>
+  );
+};
+
+FlightsTitles.propTypes = {
+  direction: PropTypes.string.isRequired,
+};
 
 export default FlightsTitles;

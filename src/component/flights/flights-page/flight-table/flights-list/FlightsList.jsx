@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect, useRef } from 'react';
+import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
@@ -9,9 +9,7 @@ import {
 import './flightslist.scss';
 import FlightsListItem from './flights-list-items/FllightsListItem';
 
-const FlightsList = ({ rowHeight, visibleRows, searchNumber, direction, searchDate }) => {
-  const refUl = useRef();
-  const [start, setStart] = useState(0);
+const FlightsList = ({ searchNumber, direction, searchDate }) => {
   const isPending = useSelector(state => isPendingSelector(state));
 
   const flights = useSelector(state => {
@@ -51,45 +49,16 @@ const FlightsList = ({ rowHeight, visibleRows, searchNumber, direction, searchDa
     }
     return sortedFlights;
   });
-  function getTopHeight() {
-    return rowHeight * start;
-  }
-  function getBottomHeight() {
-    return rowHeight * (flights.length - (start + visibleRows + 1));
-  }
-
-  useEffect(() => {
-    if (!refUl.current) {
-      return;
-    }
-    function onScroll(e) {
-      setStart(
-        Math.min(flights.length - visibleRows - 1, Math.floor(e.target.scrollTop / rowHeight)),
-      );
-    }
-    refUl.current.addEventListener('scroll', onScroll);
-
-    return () => {
-      if (refUl.current) {
-        refUl.current.removeEventListener('scroll', onScroll);
-      }
-    };
-  }, [flights.length, visibleRows, rowHeight]);
+  console.log(flights);
   return (
     <>
       {!isPending && flights.length === 0 ? (
         <h2 className="flights-list-without">Немає рейсів</h2>
       ) : (
-        <ul
-          className="flights-list-items"
-          ref={refUl}
-          style={{ height: rowHeight * visibleRows + 1, overflowY: 'scroll' }}
-        >
-          <div style={{ height: getTopHeight() }} />
-          {flights.slice(start, start + visibleRows + 1).map(elProps => (
-            <FlightsListItem props={elProps} key={elProps.id} />
+        <ul className="flights-list-items">
+          {flights.map(elProps => (
+            <FlightsListItem props={elProps} key={elProps.id} direction={direction} />
           ))}
-          <div style={{ height: getBottomHeight() }} />
         </ul>
       )}
     </>
@@ -97,8 +66,6 @@ const FlightsList = ({ rowHeight, visibleRows, searchNumber, direction, searchDa
 };
 
 FlightsList.propTypes = {
-  rowHeight: PropTypes.number.isRequired,
-  visibleRows: PropTypes.number.isRequired,
   searchCity: PropTypes.string,
   direction: PropTypes.string.isRequired,
   searchDate: PropTypes.string,

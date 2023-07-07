@@ -26,12 +26,10 @@ const FlightsTable = ({
       </div>
       <div className="flights-table-data">
         <div className="flights-list">
-          <FlightsTitles />
+          <FlightsTitles direction={direction} />
           <Suspense fallback={<Spinner />}>
             <FlightsList
               searchNumber={searchNumber}
-              rowHeight={90}
-              visibleRows={5}
               direction={direction}
               searchDate={searchDate}
             />
