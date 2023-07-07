@@ -1,39 +1,35 @@
 import React, { Suspense, lazy } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import MyDatePicker from '../../../../ui-elements/date-picker/MyDatePicker';
 import Spinner from '../../../../ui-elements/spinner/Spinner';
 import FlightsButton from './flights-buttons/FlightsButton';
 import './flighttable.scss';
 import FlightsTitles from './flights-titles/FlightsTitles';
+import { isPendingSelector } from '../../../../redux-store/flights.selectors';
+import FlightsList from './flights-list/FlightsList';
 
-const FlightsList = lazy(() => import('./flights-list/FlightsList'));
+const FlightsTable = ({ searchNumber, searchDate, search, direction }) => {
+  const isPending = useSelector(state => isPendingSelector(state));
 
-const FlightsTable = ({
-  searchNumber,
-  searchDate,
-  search,
-  direction,
-  setDateCheckToLocalStorage,
-}) => {
   return (
     <div className="flights-table">
       <FlightsButton search={search} />
       <div className="flights-table-date">
-        <MyDatePicker
-          searchDate={searchDate}
-          setDateCheckToLocalStorage={setDateCheckToLocalStorage}
-        />
+        <MyDatePicker searchDate={searchDate} />
       </div>
       <div className="flights-table-data">
         <div className="flights-list">
           <FlightsTitles direction={direction} />
-          <Suspense fallback={<Spinner />}>
+          {isPending ? (
+            <Spinner />
+          ) : (
             <FlightsList
               searchNumber={searchNumber}
               direction={direction}
               searchDate={searchDate}
             />
-          </Suspense>
+          )}
         </div>
       </div>
     </div>

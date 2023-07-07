@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
@@ -22,13 +22,18 @@ const theme = createTheme({
 });
 
 dayjs.extend(customParseFormat);
-export default function MyDatePicker({ searchDate, setDateCheckToLocalStorage }) {
+export default function MyDatePicker({ searchDate }) {
   const date = useSelector(state => dateSelector(state));
   const dispatch = useDispatch();
   const handleDateChange = pickedDate => {
     dispatch(getDatePick(pickedDate.toISOString()));
-    setDateCheckToLocalStorage(true);
   };
+
+  const today = dayjs();
+
+  useEffect(() => {
+    dispatch(getDatePick(today.toISOString()));
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -36,7 +41,7 @@ export default function MyDatePicker({ searchDate, setDateCheckToLocalStorage })
         <DemoContainer components={['DatePicker']}>
           <DatePicker
             label="Ваша дата"
-            value={searchDate === '' ? null : date}
+            value={searchDate === '' ? today : date}
             onChange={handleDateChange}
           />
         </DemoContainer>
@@ -47,5 +52,4 @@ export default function MyDatePicker({ searchDate, setDateCheckToLocalStorage })
 
 MyDatePicker.propTypes = {
   searchDate: PropTypes.string,
-  setDateCheckToLocalStorage: PropTypes.func.isRequired,
 };
