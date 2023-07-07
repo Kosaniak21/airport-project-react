@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const HeaderLinkElem = React.memo(({ labelText, activeCheckbox, handleCheckboxChange, idNum }) => {
-  let id = `link-element${idNum}`;
+  const id = `link-element${idNum}`;
   return (
     <>
       <input
