@@ -32,8 +32,8 @@ const FlightsPage = () => {
 
   useEffect(() => {
     if (direction) {
-      dispatch(getFlightsList(direction));
       dispatch(fetchPending());
+      dispatch(getFlightsList(direction));
     }
     window.scrollTo(0, 280);
   }, [direction, search]);

@@ -10,8 +10,6 @@ import './flightslist.scss';
 import FlightsListItem from './flights-list-items/FllightsListItem';
 
 const FlightsList = ({ searchNumber, direction, searchDate }) => {
-  const isPending = useSelector(state => isPendingSelector(state));
-
   const flights = useSelector(state => {
     let sortedFlights = sortedFlightsListSelector(state);
     if (searchNumber) {
@@ -49,10 +47,10 @@ const FlightsList = ({ searchNumber, direction, searchDate }) => {
     }
     return sortedFlights;
   });
-  console.log(flights);
+
   return (
     <>
-      {!isPending && flights.length === 0 ? (
+      {flights.length === 0 ? (
         <h2 className="flights-list-without">Немає рейсів</h2>
       ) : (
         <ul className="flights-list-items">

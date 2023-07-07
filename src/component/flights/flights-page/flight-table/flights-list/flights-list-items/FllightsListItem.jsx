@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import dayjs from 'dayjs';
 
 const FlightsListItem = ({ props, direction }) => {
   const {
@@ -50,9 +49,7 @@ const FlightsListItem = ({ props, direction }) => {
   const [hours, minutes, seconds] = timePart.split(':');
 
   const date = new Date(year, month - 1, day, hours, minutes, seconds);
-  if (date > new Date()) {
-    console.log(10);
-  }
+
   const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes
     .toString()
     .padStart(2, '0')}`;
