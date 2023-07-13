@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 const FlightsListItem = ({ props, direction }) => {
   const {
-    airline,
+    airlineLogo,
+    airlineName,
     arrivalCity,
     arrivalDate,
     arrivalDateExpected,
@@ -40,15 +41,13 @@ const FlightsListItem = ({ props, direction }) => {
   let time;
 
   if (direction === 'arrival') {
-    time = arrivalDate || arrivalDateExpected;
+    time = new Date(arrivalDate) || new Date(arrivalDateExpected);
   } else {
-    time = departureDate || departureDateExpected;
+    time = new Date(departureDate) || new Date(departureDateExpected);
   }
-  const [datePart, timePart] = time.split(' ');
-  const [day, month, year] = datePart.split('-');
-  const [hours, minutes, seconds] = timePart.split(':');
 
-  const date = new Date(year, month - 1, day, hours, minutes, seconds);
+  const hours = time.getHours();
+  const minutes = time.getMinutes();
 
   const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes
     .toString()
@@ -62,13 +61,13 @@ const FlightsListItem = ({ props, direction }) => {
       <span>{formattedTime}</span>
       <span>{direction === 'arrival' ? departureCity : arrivalCity}</span>
       {direction === 'departure' ? (
-        <span>{date > new Date() ? 'Очікує вильоту' : `Вилетів о ${formattedTime}`}</span>
+        <span>{time > new Date() ? 'Очікує вильоту' : `Вилетів о ${formattedTime}`}</span>
       ) : (
-        <span>{date > new Date() ? 'Очікує прильоту' : `Прилетів о ${formattedTime}`}</span>
+        <span>{time > new Date() ? 'Очікує прильоту' : `Прилетів о ${formattedTime}`}</span>
       )}
       <span>
-        <img src={airline.logo} alt="logo-airline" />
-        {airline.name}
+        <img src={airlineLogo} alt="logo-airline" />
+        {airlineName}
       </span>
       <span>{number}</span>
     </li>

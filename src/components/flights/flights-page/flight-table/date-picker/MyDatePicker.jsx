@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
@@ -6,6 +6,7 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { useNavigate } from 'react-router-dom';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { lightBlue } from '@mui/material/colors';
@@ -22,18 +23,14 @@ const theme = createTheme({
 });
 
 dayjs.extend(customParseFormat);
-export default function MyDatePicker({ searchDate }) {
+export default function MyDatePicker({ searchDate, searchNumber }) {
   const date = useSelector(state => dateSelector(state));
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleDateChange = pickedDate => {
     dispatch(getDatePick(pickedDate.toISOString()));
+    navigate(`/departure?search${searchNumber}=&date=${dayjs(pickedDate).format('DD.MM.YYYY')}`);
   };
-
-  const today = dayjs();
-
-  useEffect(() => {
-    dispatch(getDatePick(today.toISOString()));
-  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -41,8 +38,17 @@ export default function MyDatePicker({ searchDate }) {
         <DemoContainer components={['DatePicker']}>
           <DatePicker
             label="Ваша дата"
-            value={searchDate === '' ? today : date}
+            value={
+              searchDate !== dayjs(date).format('DD.MM.YYYY')
+                ? dayjs(searchDate, 'DD.MM.YYYY')
+                : dayjs(date)
+            }
             onChange={handleDateChange}
+            slotProps={{
+              textField: {
+                readOnly: true,
+              },
+            }}
           />
         </DemoContainer>
       </LocalizationProvider>
@@ -52,4 +58,5 @@ export default function MyDatePicker({ searchDate }) {
 
 MyDatePicker.propTypes = {
   searchDate: PropTypes.string,
+  searchNumber: PropTypes.string,
 };

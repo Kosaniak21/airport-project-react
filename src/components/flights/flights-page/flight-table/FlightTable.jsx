@@ -16,7 +16,7 @@ const FlightsTable = ({ searchNumber, searchDate, search, direction }) => {
     <div className="flights-table">
       <FlightsButton search={search} />
       <div className="flights-table-date">
-        <MyDatePicker searchDate={searchDate} />
+        <MyDatePicker searchDate={searchDate} searchNumber={searchNumber} />
       </div>
       <div className="flights-table-data">
         <div className="flights-list">
