@@ -1,8 +1,9 @@
+import dayjs from 'dayjs';
 import { FETCH_FLIGHTS_LIST, DATE_PICK, FETCH_PENDING } from './flights.actions';
 
 const initialState = {
   flightsList: [],
-  date: new Date().toISOString(),
+  date: dayjs().toISOString(),
   pending: true,
 };
 
