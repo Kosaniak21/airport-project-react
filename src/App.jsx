@@ -1,13 +1,13 @@
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { dateChecker, getDatePick } from './redux-store/flights.actions.js';
-import { dateSelector, isDateCheckedSelector } from './redux-store/flights.selectors.js';
-import Home from './pages/Home.jsx';
-import Flight from './pages/Flight.jsx';
-import NoMatch from './pages/NoMatch.jsx';
-import Layout from './pages/Layout.jsx';
+import { getDatePick } from './redux-store/flights.actions.js';
+import { dateSelector } from './redux-store/flights.selectors.js';
+import Flight from './components/flights/Flight.jsx';
+import NoMatch from './components/NoMatch.jsx';
+import Layout from './components/Layout.jsx';
 import useLocalStorage from './hooks/useLocalStorage.js';
+import Main from './components/main/Main.jsx';
 
 const titles = {
   '/': `Аеропорт "Київ"`,
@@ -45,7 +45,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
+        <Route index element={<Main />} />
         <Route path="departure" element={<Flight />} />
         <Route path="arrival" element={<Flight />} />
         <Route path="*" element={<NoMatch />} />
