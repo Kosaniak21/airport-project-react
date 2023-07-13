@@ -38,7 +38,7 @@ module.exports = (env, argv) => {
         template: './src/index.html',
       }),
       new CopyPlugin({
-        patterns: [{ from: 'src/images/favicon.ico', to: 'images/favicon.ico' }],
+        patterns: [{ from: 'images/favicon.ico', to: 'favicon.ico' }],
       }),
     ],
     devServer: {

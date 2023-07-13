@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import plane from './../../images/plane.jpg';
-import logo from './../../images/logo.png';
-import hotels from './../../images/Hotels.jpg';
-import vip from './../../images/vip.jpg';
+import plane from '../../../images/plane.jpg';
+import logo from '../../../images/logo.png';
+import hotels from '../../../images/Hotels.jpg';
+import vip from '../../../images/vip.jpg';
 import './header.scss';
 import HeaderLinkElem from './header-components/HeaderLinkElem';
 import HeaderNav from './header-components/HeaderNav';

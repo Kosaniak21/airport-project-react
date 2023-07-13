@@ -34,7 +34,6 @@ const FlightsPage = () => {
       dispatch(fetchPending());
       dispatch(getFlightsList(direction));
     }
-    window.scrollTo(0, 280);
   }, [direction, search]);
 
   useEffect(() => {

@@ -2,10 +2,7 @@ import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
-import {
-  isPendingSelector,
-  sortedFlightsListSelector,
-} from '../../../../../redux-store/flights.selectors';
+import { sortedFlightsListSelector } from '../../../../../redux-store/flights.selectors';
 import './flightslist.scss';
 import FlightsListItem from './flights-list-items/FllightsListItem';
 

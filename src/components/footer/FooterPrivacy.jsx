@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import smplLogo from "./../../images/smplLogo.webp";
-import logowhite from "./../../images/logowhite.webp";
+import smplLogo from '../../../images/smplLogo.webp';
+import logowhite from '../../../images/logowhite.webp';
 
 const FooterPrivacy = () => (
   <section className="footer_privacy">
@@ -20,11 +20,7 @@ const FooterPrivacy = () => (
               <b>Investment Group</b>
             </div>
 
-            <img
-              src={logowhite}
-              alt="icon_link_privacy"
-              className="footer_privacy__logo_white"
-            />
+            <img src={logowhite} alt="icon_link_privacy" className="footer_privacy__logo_white" />
           </div>
         </a>
       </div>
@@ -33,11 +29,7 @@ const FooterPrivacy = () => (
     <div className="footer_privacy__block">
       <a className="footer_privacy__smpl_link" src="https://smpl.solutions/">
         <p>Розробка сайту</p>
-        <img
-          src={smplLogo}
-          alt="smpl/solution"
-          className="footer_privacy__logo_smpl"
-        />
+        <img src={smplLogo} alt="smpl/solution" className="footer_privacy__logo_smpl" />
       </a>
     </div>
   </section>
