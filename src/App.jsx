@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Flight from './components/flights/Flight.jsx';
-import NoMatch from './components/NoMatch.jsx';
+import NoMatch from './components/nomatch/NoMatch.jsx';
 import Layout from './components/Layout.jsx';
 import Main from './components/main/Main.jsx';
 

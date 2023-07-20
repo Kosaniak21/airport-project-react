@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import MyDatePicker from './date-picker/MyDatePicker';
-import Spinner from './spinner/Spinner';
+import MyDatePicker from './../../../date-picker/MyDatePicker';
+import Spinner from './../../../spinner/Spinner';
 import FlightsButton from './flights-buttons/FlightsButton';
 import './flighttable.scss';
 import FlightsTitles from './flights-titles/FlightsTitles';
