@@ -12,32 +12,28 @@ const FlightsListItem = ({ props, direction }) => {
     departureDate,
     departureDateExpected,
     terminal,
-    number,
+    codeShare,
   } = props;
+
   const terminalStyle = {
-    border: '2px solid #02ea29',
-    color: '#02ea29',
-    borderRadius: '50%',
-    height: '52px',
-    width: '52px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    C: {
+      border: '2px solid #ff2121',
+      color: '#ff2121',
+    },
+    D: {
+      border: '2px solid #005dff',
+      color: '#005dff',
+    },
+    B: {
+      border: '2px solid #eeff00',
+      color: '#eeff00',
+    },
+    E: {
+      border: '2px solid #e500ff',
+      color: '#e500ff',
+    },
   };
 
-  if (terminal === 'C') {
-    terminalStyle.border = '2px solid #ff2121';
-    terminalStyle.color = '#ff2121';
-  } else if (terminal === 'D') {
-    terminalStyle.border = '2px solid #005dff';
-    terminalStyle.color = '#005dff';
-  } else if (terminal === 'B') {
-    terminalStyle.border = '2px solid #eeff00';
-    terminalStyle.color = '#eeff00';
-  } else if (terminal === 'E') {
-    terminalStyle.border = '2px solid #e500ff';
-    terminalStyle.color = '#e500ff';
-  }
   let time;
 
   if (direction === 'arrival') {
@@ -56,7 +52,9 @@ const FlightsListItem = ({ props, direction }) => {
   return (
     <li className="flights-list-item">
       <span>
-        <span style={terminalStyle}>{terminal}</span>
+        <p className="flights-list-item__terminal" style={terminalStyle[terminal]}>
+          {terminal}
+        </p>
       </span>
       <span>{formattedTime}</span>
       <span>{direction === 'arrival' ? departureCity : arrivalCity}</span>
@@ -69,7 +67,7 @@ const FlightsListItem = ({ props, direction }) => {
         <img src={airlineLogo} alt="logo-airline" />
         {airlineName}
       </span>
-      <span>{number}</span>
+      <span>{codeShare}</span>
     </li>
   );
 };

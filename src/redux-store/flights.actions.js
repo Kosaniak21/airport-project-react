@@ -1,4 +1,4 @@
-import { fetchFlightsList } from './flightsGateway';
+import { fetchFlightsList } from '../utils/flightsGateway';
 
 export const FETCH_FLIGHTS_LIST = 'FLIGHTS/FETCH_FLIGHTS_LIST';
 export const DATE_PICK = 'FLIGHTS/DATE_PICK';

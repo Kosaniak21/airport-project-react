@@ -38,6 +38,16 @@
     width: 90px;
     height: 100%;
   }
+  &-item__terminal {
+    border: 2px solid #02ea29;
+    color: #02ea29;
+    border-radius: 50%;
+    height: 52px;
+    width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   &-without {
     text-align: center;
     padding-top: 170px;

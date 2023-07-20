@@ -10,8 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { lightBlue } from '@mui/material/colors';
-import { getDatePick } from '../../../../../redux-store/flights.actions';
-import { dateSelector } from '../../../../../redux-store/flights.selectors';
+import { getDatePick } from '../../redux-store/flights.actions';
+import { dateSelector } from '../../redux-store/flights.selectors';
 
 const theme = createTheme({
   palette: {

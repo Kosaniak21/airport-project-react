@@ -1,0 +1,14 @@
+.no-match {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 500px;
+  & h1 {
+    font-size: 120px;
+    color: red;
+  }
+  & p {
+    font-size: 45px;
+  }
+}
