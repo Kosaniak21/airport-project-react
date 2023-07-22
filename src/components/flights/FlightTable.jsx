@@ -1,13 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import MyDatePicker from './../../../date-picker/MyDatePicker';
-import Spinner from './../../../spinner/Spinner';
-import FlightsButton from './flights-buttons/FlightsButton';
+import MyDatePicker from '../date-picker/MyDatePicker';
+import Spinner from '../spinner/Spinner';
+import FlightsButton from './buttons/FlightsButton';
 import './flighttable.scss';
-import FlightsTitles from './flights-titles/FlightsTitles';
-import { isPendingSelector } from '../../../../redux-store/flights.selectors';
-import FlightsList from './flights-list/FlightsList';
+import FlightsTitles from './titles/FlightsTitles';
+import { isPendingSelector } from '../../redux-store/flights.selectors';
+import FlightsList from './list/FlightsList';
 
 const FlightsTable = ({ searchNumber, searchDate, search, direction }) => {
   const isPending = useSelector(state => isPendingSelector(state));

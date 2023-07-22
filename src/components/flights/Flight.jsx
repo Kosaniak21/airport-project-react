@@ -1,5 +1,5 @@
 import React from 'react';
-import FlightsPage from './flights-page/FlightsPage';
+import FlightsPage from './FlightsPage';
 
 const Flight = () => {
   return (
