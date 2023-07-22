@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { fetchPending, getFlightsList } from '../../../redux-store/flights.actions';
-import { extractDate, extractNumber } from '../../../utils/extractData';
-import SearchForm from '../../search/SearchForm';
-import FlightTable from './flight-table/FlightTable';
+import { fetchPending, getFlightsList } from '../../redux-store/flights.actions';
+import { extractDate, extractNumber } from '../../utils/extractData';
+import SearchForm from '../search/SearchForm';
+import FlightTable from './FlightTable';
 
 import './flightspage.scss';
 
