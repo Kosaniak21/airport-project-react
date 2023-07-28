@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import './flightsbutton.scss';
 const setActive = ({ isActive }) => {
   return isActive ? 'flights-table-button activeBtn' : 'flights-table-button';
 };

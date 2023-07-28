@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import headerConfig from './headerConfig';
 import logo from '../../../images/logo.png';
-import HeaderLinkElem from './header-components/HeaderLinkElem';
-import HeaderNav from './header-components/HeaderNav';
+import HeaderLinkElem from './HeaderLinkElem';
+import HeaderNav from './HeaderNav';
 import './header.scss';
 
 const Header = () => {

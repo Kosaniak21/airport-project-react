@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import Flight from './components/flights/Flight.jsx';
+import Flights from './components/flights/Flights.jsx';
 import NoMatch from './components/nomatch/NoMatch.jsx';
 import Layout from './components/Layout.jsx';
 import Main from './components/main/Main.jsx';
@@ -20,8 +20,8 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Main />} />
-        <Route path="departure" element={<Flight />} />
-        <Route path="arrival" element={<Flight />} />
+        <Route path="departure" element={<Flights />} />
+        <Route path="arrival" element={<Flights />} />
         <Route path="*" element={<NoMatch />} />
       </Route>
     </Routes>
