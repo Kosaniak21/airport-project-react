@@ -2,8 +2,7 @@ import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
-import { sortedFlightsListSelector } from '../../../redux-store/flights.selectors';
-import './flightslist.scss';
+import { sortedFlightsListSelector } from '../../redux-store/flights.selectors';
 import FlightsListItem from './FllightsListItem';
 
 const FlightsList = ({ searchNumber, direction, searchDate }) => {
@@ -26,7 +25,7 @@ const FlightsList = ({ searchNumber, direction, searchDate }) => {
       );
     });
   });
-  console.log(flights);
+
   return (
     <>
       {flights.length === 0 ? (
