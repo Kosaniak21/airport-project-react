@@ -2,18 +2,18 @@ import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
-import { sortedFlightsListSelector } from '../../redux-store/flights.selectors';
+import { flightsListSelector } from '../../redux-store/flights.selectors';
 import FlightsListItem from './FllightsListItem';
 
 const FlightsList = ({ searchNumber, direction, searchDate }) => {
   const flights = useSelector(state => {
-    let sortedFlights = sortedFlightsListSelector(state);
+    let flights = flightsListSelector(state);
     if (searchNumber) {
-      sortedFlights = sortedFlights.filter(el => {
+      flights = flights.filter(el => {
         return el.codeShare === searchNumber;
       });
     }
-    return sortedFlights.filter(flight => {
+    return flights.filter(flight => {
       const expectedDate =
         direction === 'arrival' ? flight.arrivalDateExpected : flight.departureDateExpected;
       const actualDate = direction === 'arrival' ? flight.arrivalDate : flight.departureDate;
