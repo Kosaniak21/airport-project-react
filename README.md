@@ -39,7 +39,7 @@ The application uses the following technologies:<br />
 
 ## Description
 
-This application displays flights information fetched from an API and allows the user to filter the flights by departure and arrival airports, airlines, and flight numbers. The user can also sort the flights by departure and arrival times, duration, and price. The application provides a user-friendly interface and responsive design.
+This application displays flights information fetched from an API and allows the user to filter the flights by departure and arrival airports, airlines, and flight numbers. The user can also sort the flights by departure and arrival times, duration, and price. The application provides a user-friendly interface.
 
 <div><h1></h1></div>
 
