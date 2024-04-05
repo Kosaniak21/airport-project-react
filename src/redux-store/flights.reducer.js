@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
-import { FETCH_FLIGHTS_LIST, DATE_PICK, FETCH_PENDING } from './flights.actions';
+
+import { DATE_PICK, FETCH_FLIGHTS_LIST, FETCH_PENDING } from './flights.actions';
 
 const initialState = {
   flightsList: [],

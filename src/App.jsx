@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
+
 import Flights from './components/flights/Flights.jsx';
-import NoMatch from './components/nomatch/NoMatch.jsx';
 import Layout from './components/Layout.jsx';
 import Main from './components/main/Main.jsx';
+import NoMatch from './components/nomatch/NoMatch.jsx';
 
 const titles = {
   '/': `Аеропорт "Київ"`,

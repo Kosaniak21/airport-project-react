@@ -50,9 +50,9 @@ const FlightsListItem = ({ props, direction }) => {
     .padStart(2, '0')}`;
 
   return (
-    <li className="flights-list-item">
+    <li className="flights__list-item">
       <span>
-        <p className="flights-list-item__terminal" style={terminalStyle[terminal]}>
+        <p className="flights__terminal" style={terminalStyle[terminal]}>
           {terminal}
         </p>
       </span>

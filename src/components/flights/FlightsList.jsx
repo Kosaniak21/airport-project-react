@@ -1,8 +1,9 @@
+import { flightsListSelector } from '@redux-store/flights.selectors';
+import dayjs from 'dayjs';
+import PropTypes from 'prop-types';
 import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
-import dayjs from 'dayjs';
-import { flightsListSelector } from '../../redux-store/flights.selectors';
+
 import FlightsListItem from './FllightsListItem';
 
 const FlightsList = ({ searchNumber, direction, searchDate }) => {
@@ -29,9 +30,9 @@ const FlightsList = ({ searchNumber, direction, searchDate }) => {
   return (
     <>
       {flights.length === 0 ? (
-        <h2 className="flights-list-without">Немає рейсів</h2>
+        <h2 className="flights__list-without">Немає рейсів</h2>
       ) : (
-        <ul className="flights-list-items">
+        <ul className="flights__list-items">
           {flights.map(elProps => (
             <FlightsListItem props={elProps} key={elProps.id} direction={direction} />
           ))}

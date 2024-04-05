@@ -19,16 +19,19 @@ body {
   flex-grow: 1;
   min-height: 100vh;
 }
+
 @media (max-width: 1095px) {
   body {
     padding-top: 78px;
   }
 }
+
 @media (max-width: 1001px) {
   body {
     padding-top: 70px;
   }
 }
+
 @media (max-width: 776px) {
   body {
     padding-top: 63px;

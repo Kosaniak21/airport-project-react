@@ -1,7 +1,9 @@
+import logo from '@images/logo.png';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import headerConfig from './headerConfig';
-import logo from '../../../images/logo.png';
+
 import './header.scss';
 
 const Header = () => {
@@ -13,14 +15,14 @@ const Header = () => {
 
   return (
     <header className="header">
-      <div className="header-logo">
+      <div className="header__logo">
         <Link to="/">
           <img src={logo} alt="header-logo" />
         </Link>
       </div>
       <nav className="header-links">
         {headerConfig.map(config => (
-          <div key={config.idNum} className="header-links--element">
+          <div key={config.idNum} className="header-links__element">
             <>
               <input
                 type="checkbox"
@@ -30,9 +32,9 @@ const Header = () => {
               />
               <label htmlFor={`link-element${config.idNum}`}>{config.labelText}</label>
             </>
-            <div className="header-links--modal">
-              <div className="header-links--modal-container">
-                <div className="header-links--modal-block">
+            <div className="header-links__modal">
+              <div className="header-links__modal-container">
+                <div className="header-links__modal-block">
                   <nav>
                     <img src={config.modalData.headerNav.img} alt="plane" />
                     <h4>{config.modalData.headerNav.title}</h4>
@@ -40,7 +42,7 @@ const Header = () => {
                     <a>{config.modalData.headerNav.btnText}</a>
                   </nav>
                 </div>
-                <div className="header-links--modal-links">
+                <div className="header-links__modal-links">
                   {config.modalData.links.map((section, index) => (
                     <div key={index}>
                       <p>{section.title}</p>

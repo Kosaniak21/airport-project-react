@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const path = require('path');
 const webpack = require('webpack');
 module.exports = (env, argv) => {
   const isProd = argv.mode === 'production';
@@ -31,6 +32,12 @@ module.exports = (env, argv) => {
     },
     resolve: {
       extensions: ['.js', '.jsx'],
+      alias: {
+        '@redux-store': path.resolve(__dirname, 'src/redux-store'),
+        '@components': path.resolve(__dirname, 'src/components'),
+        '@images': path.resolve(__dirname, 'images'),
+        '@utils': path.resolve(__dirname, 'src/utils'),
+      },
     },
     plugins: [
       new webpack.ProgressPlugin(),

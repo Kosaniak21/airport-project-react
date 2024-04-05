@@ -1,17 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-import dayjs from 'dayjs';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { useNavigate } from 'react-router-dom';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { lightBlue } from '@mui/material/colors';
-import { getDatePick } from '../../redux-store/flights.actions';
-import { dateSelector } from '../../redux-store/flights.selectors';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DemoContainer as DatePickerContainer } from '@mui/x-date-pickers/internals/demo';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { getDatePick } from '@redux-store/flights.actions';
+import { dateSelector } from '@redux-store/flights.selectors';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme({
   palette: {
@@ -35,7 +35,8 @@ export default function MyDatePicker({ searchDate, searchNumber }) {
   return (
     <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer components={['DatePicker']}>
+        {/* Renamed here */}
+        <DatePickerContainer components={['DatePicker']}>
           <DatePicker
             label="Ваша дата"
             value={
@@ -50,7 +51,7 @@ export default function MyDatePicker({ searchDate, searchNumber }) {
               },
             }}
           />
-        </DemoContainer>
+        </DatePickerContainer>
       </LocalizationProvider>
     </ThemeProvider>
   );
