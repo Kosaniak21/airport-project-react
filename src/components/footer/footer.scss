@@ -18,14 +18,16 @@
 .fa-brands:hover {
   color: #afbdba;
 }
-.footer_links {
+.footer-links {
   display: flex;
   justify-content: space-between;
   column-gap: 25px;
+
   &__list {
     display: flex;
     flex-direction: column;
   }
+
   &__link {
     margin-bottom: 8px;
     border-bottom: 1px solid transparent;
@@ -35,30 +37,32 @@
     display: inline-block;
     width: max-content;
   }
+
   &__link:hover {
     border-bottom: 1px solid white;
   }
+
   &__title {
     font-weight: 700;
     margin-bottom: 12px;
   }
-  &__list-accordion {
-    display: none;
-  }
 }
-.footer_contact {
+.footer-contact {
   &__text {
     font-weight: 700;
   }
+
   &__number {
     font-size: 24px;
     color: white;
     text-decoration: none;
     margin-bottom: 15px;
   }
+
   &__main {
     margin-bottom: 15px;
   }
+
   &__icons {
     display: flex;
     margin-top: 10px;
@@ -66,7 +70,7 @@
   }
 }
 
-.footer_privacy {
+.footer-privacy {
   border-top: 1px solid white;
   margin-top: 30px;
   padding-top: 20px;
@@ -74,26 +78,32 @@
   flex-grow: 1;
   justify-content: space-between;
   color: #afbdba;
-  &__logo_white {
+
+  &__logo__white {
     width: 30px;
     height: 30px;
   }
-  &__logo_smpl {
+
+  &__logo__smpl {
     width: 96px;
     height: 19px;
   }
+
   &__first {
     display: flex;
   }
-  &__block {
+
+  &__wrapper {
     font-size: 12px;
     line-height: 18px;
   }
-  &__link_img:hover {
+
+  &__link__img:hover {
     text-decoration: underline;
     cursor: pointer;
   }
-  &__smpl_link:hover {
+
+  &__smpl-link:hover {
     text-decoration: underline;
   }
 }

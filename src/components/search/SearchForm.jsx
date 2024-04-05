@@ -1,10 +1,12 @@
-import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import React, { useEffect, useRef, useState } from 'react';
+
 import './searchform.scss';
+
+import { dateSelector } from '@redux-store/flights.selectors';
 import dayjs from 'dayjs';
-import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { dateSelector } from '../../redux-store/flights.selectors';
+import { Link } from 'react-router-dom';
 
 const SearchForm = ({ searchNumber }) => {
   const inputRef = useRef();
@@ -34,15 +36,15 @@ const SearchForm = ({ searchNumber }) => {
   return (
     <div className="search-form">
       <h1>ПОШУК РЕЙСУ</h1>
-      <div className="search-form-block">
+      <div className="search-form__block">
         <i className="fa-solid fa-magnifying-glass" />
         <input
-          className="search-form-input"
+          className="search-form__input"
           type="text"
           placeholder={searchNumber ? '' : 'Номер рейсу'}
           ref={inputRef}
         />
-        <Link to={`/departure${search}`} className="search-form-btn">
+        <Link to={`/departure${search}`} className="search-form__btn">
           ЗНАЙТИ
         </Link>
       </div>

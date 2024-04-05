@@ -1,27 +1,27 @@
-import React from 'react';
+import { dateSelector } from '@redux-store/flights.selectors';
 import dayjs from 'dayjs';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { dateSelector } from '../../redux-store/flights.selectors';
+import { Link } from 'react-router-dom';
 
 const MainButtons = () => {
   const date = useSelector(state => dateSelector(state));
 
   return (
-    <div className="main-search-buttons">
+    <div className="main-search__buttons">
       <Link
         to={`/departure?search=&date=${dayjs(date).format('DD.MM.YYYY')}`}
-        className="main-search-button"
+        className="main-search__button"
       >
-        <i className="fa-sharp fa-solid fa-plane-departure"></i>
+        <i className="fa-sharp fa-solid fa-plane-departure" />
         ВИЛІТ УСІ РЕЙСИ
       </Link>
       <Link
         to={`/arrival?search=&date=${dayjs(date).format('DD.MM.YYYY')}`}
-        className="main-search-button"
+        className="main-search__button"
       >
         ПРИЛІТ УСІ РЕЙСИ
-        <i className="fa-sharp fa-solid fa-plane-arrival"></i>
+        <i className="fa-sharp fa-solid fa-plane-arrival" />
       </Link>
     </div>
   );

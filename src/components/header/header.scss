@@ -10,11 +10,17 @@
   width: 100%;
   box-shadow: 0px 16px 32px -12px rgba(0, 0, 0, 0.31);
   z-index: 2;
-  &-logo img {
+
+  &__logo img {
     margin-left: 50%;
     width: 180px;
     height: 67px;
   }
+
+  &-links input {
+    display: none;
+  }
+
   &-links {
     color: white;
     height: 100%;
@@ -22,34 +28,23 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    &--element {
+
+    &__element {
       color: white;
       font-weight: 500;
       font-size: 20px;
       height: 100%;
     }
-    &--element label {
+
+    &__element label {
       height: 100%;
       cursor: pointer;
       padding: 0 35px;
       display: flex;
       align-items: center;
     }
-    &--toggle {
-      padding: 0 24px;
-      font-weight: 800;
-      font-size: 20px;
-      color: white;
-      height: 100%;
-    }
-    &--toggle label {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      height: 100%;
-    }
 
-    &--modal {
+    &__modal {
       position: absolute;
       top: 92px;
       overflow: hidden;
@@ -62,15 +57,18 @@
         flex-direction: row;
         justify-content: space-around;
       }
+
       &-links div {
         display: flex;
         flex-direction: column;
       }
+
       &-links p {
         font-size: 18px;
         margin-bottom: 15px;
         font-weight: 700;
       }
+
       &-links a {
         color: #1eb7ee;
         text-decoration: none;
@@ -82,13 +80,16 @@
         border-bottom: 1px solid transparent;
         transition: border-bottom 0.35s ease 0.2s;
       }
+
       &-links a:hover {
         border-bottom: 1px solid #1eb7ee;
       }
+
       &-block {
         display: flex;
         justify-content: center;
       }
+
       &-block nav {
         box-shadow: 0px 16px 32px -12px rgba(0, 0, 0, 0.31);
         width: 275px;
@@ -96,11 +97,13 @@
         border-radius: 20px;
         color: black;
       }
+
       &-block h4 {
         font-size: 22px;
         font-weight: 700;
         padding: 3px 15px;
       }
+
       &-block p {
         font-size: 17px;
         font-weight: 400;
@@ -108,6 +111,7 @@
         padding-right: 15px;
         margin-bottom: 15px;
       }
+
       &-block a {
         width: 170px;
         height: 40px;
@@ -120,12 +124,14 @@
         font-weight: 600;
         transition: all 0.3s ease-in-out;
       }
+
       &-block a:hover {
         color: white;
         background-color: #1eb7ee;
       }
     }
-    &--modal-container {
+
+    &__modal-container {
       translate: 0 -100%;
       visibility: hidden;
       transition: visibility 0.3s, translate 0.3s, opacity 0.3s;
@@ -142,32 +148,32 @@
       border-bottom-right-radius: 150px;
       filter: drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.31));
     }
-    &--modal img {
+
+    &__modal img {
       width: 100%;
       height: 168px;
       border-radius: 20px 20px 0px 83px;
     }
-    &--modal-block {
+
+    &__modal-block {
       width: 43%;
     }
-    &--modal-links {
+    
+    &__modal-links {
       width: 57%;
     }
   }
-  &-links input {
-    display: none;
-  }
 }
-.header-links--element input[type='checkbox']:checked + label + .header-links--modal {
+.header-links__element input[type='checkbox']:checked + label + .header-links__modal {
   pointer-events: all;
 }
-.header-links--element input[type='checkbox']:checked + label + .header-links--modal div {
+.header-links__element input[type='checkbox']:checked + label + .header-links__modal div {
   opacity: 1;
   translate: 0;
   visibility: visible;
   transition: visibility 0.3s, translate 0.3s, opacity 0.3s;
 }
-.header-links--element input[type='checkbox']:checked + label {
+.header-links__element input[type='checkbox']:checked + label {
   color: #008ab7;
   border-top-right-radius: 30px;
   background: rgb(30, 183, 238);

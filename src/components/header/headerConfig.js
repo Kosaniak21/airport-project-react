@@ -1,6 +1,7 @@
-import plane from '../../../images/plane.jpg';
-import hotels from '../../../images/Hotels.jpg';
-import vip from '../../../images/vip.jpg';
+import hotels from '@images/Hotels.jpg';
+import plane from '@images/plane.jpg';
+import vip from '@images/vip.jpg';
+
 const headerConfig = [
   {
     labelText: 'Пасажирам',

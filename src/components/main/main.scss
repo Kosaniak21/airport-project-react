@@ -1,5 +1,5 @@
 .main-container {
-  background-image: url('../../../images/main.webp');
+  background-image: url('~@images/main.webp');
   background-size: cover;
   background-position: center center;
   width: 100%;
@@ -8,13 +8,14 @@
   align-items: center;
 }
 .main-search {
-  &-buttons {
+  &__buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 23px;
     margin-bottom: 88px;
   }
-  &-button {
+
+  &__button {
     width: 45%;
     text-decoration: none;
     padding-top: 16px;
@@ -25,25 +26,30 @@
     height: 60px;
     transition: all 0.3s ease-in-out;
   }
-  &-button:nth-child(2) {
+
+  &__button:nth-child(2) {
     text-align: right;
     border-radius: 75px 10px 10px 10px;
   }
-  &-button:nth-child(2):hover {
+
+  &__button:nth-child(2):hover {
     border-radius: 35px 8px 8px 8px;
     background-color: #1eb7ee;
     color: #fff;
   }
-  &-button:nth-child(1) {
+
+  &__button:nth-child(1) {
     text-align: left;
     border-radius: 10px 75px 10px 10px;
   }
-  &-button:nth-child(1):hover {
+
+  &__button:nth-child(1):hover {
     border-radius: 8px 35px 8px 8px;
     background-color: #1eb7ee;
     color: #fff;
   }
-  &-button:hover .fa-sharp {
+
+  &__button:hover .fa-sharp {
     color: #fff;
   }
 }
@@ -55,6 +61,7 @@
   margin-left: 20px;
   font-size: 26px;
 }
+
 .fa-magnifying-glass {
   position: absolute;
   font-size: 33px;
