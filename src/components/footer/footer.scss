@@ -6,18 +6,22 @@
   justify-content: center;
   margin-top: auto;
 }
+
 .container {
   width: 90%;
 }
+
 .fa-brands {
   color: white;
   width: 30px;
   height: 30px;
   font-size: 30px;
 }
+
 .fa-brands:hover {
   color: #afbdba;
 }
+
 .footer-links {
   display: flex;
   justify-content: space-between;
@@ -36,6 +40,8 @@
     padding-bottom: 2px;
     display: inline-block;
     width: max-content;
+    text-decoration: none;
+    color: #afbdba;
   }
 
   &__link:hover {
@@ -47,6 +53,7 @@
     margin-bottom: 12px;
   }
 }
+
 .footer-contact {
   &__text {
     font-weight: 700;
@@ -79,12 +86,12 @@
   justify-content: space-between;
   color: #afbdba;
 
-  &__logo__white {
+  &__logo_white {
     width: 30px;
     height: 30px;
   }
 
-  &__logo__smpl {
+  &__logo_smpl {
     width: 96px;
     height: 19px;
   }
@@ -98,18 +105,28 @@
     line-height: 18px;
   }
 
-  &__link__img:hover {
+  &__link-img {
+    color: #afbdba !important;
+  }
+
+  &__link-img:hover {
     text-decoration: underline;
     cursor: pointer;
+  }
+
+  &__smpl-link {
+    color: #afbdba !important;
   }
 
   &__smpl-link:hover {
     text-decoration: underline;
   }
 }
+
 .link_flex {
   display: flex;
 }
-.margin__block {
+
+.footer-wrapper-margin {
   margin-right: 140px;
 }

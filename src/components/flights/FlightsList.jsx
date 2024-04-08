@@ -30,7 +30,7 @@ const FlightsList = ({ searchNumber, direction, searchDate }) => {
   return (
     <>
       {flights.length === 0 ? (
-        <h2 className="flights__list-without">Немає рейсів</h2>
+        <h2 className="flights__list-empty">Немає рейсів</h2>
       ) : (
         <ul className="flights__list-items">
           {flights.map(elProps => (

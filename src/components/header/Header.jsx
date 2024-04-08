@@ -23,18 +23,16 @@ const Header = () => {
       <nav className="header-links">
         {headerConfig.map(config => (
           <div key={config.idNum} className="header-links__element">
-            <>
-              <input
-                type="checkbox"
-                id={`link-element${config.idNum}`}
-                checked={activeCheckbox === `link-element${config.idNum}`}
-                onChange={() => handleCheckboxChange(`link-element${config.idNum}`)}
-              />
-              <label htmlFor={`link-element${config.idNum}`}>{config.labelText}</label>
-            </>
-            <div className="header-links__modal">
-              <div className="header-links__modal-container">
-                <div className="header-links__modal-block">
+            <input
+              type="checkbox"
+              id={`link-element${config.idNum}`}
+              checked={activeCheckbox === `link-element${config.idNum}`}
+              onChange={() => handleCheckboxChange(`link-element${config.idNum}`)}
+            />
+            <label htmlFor={`link-element${config.idNum}`}>{config.labelText}</label>
+            <div className="header-modal">
+              <div className="header-modal__container">
+                <div className="header-modal__block">
                   <nav>
                     <img src={config.modalData.headerNav.img} alt="plane" />
                     <h4>{config.modalData.headerNav.title}</h4>
@@ -42,7 +40,7 @@ const Header = () => {
                     <a>{config.modalData.headerNav.btnText}</a>
                   </nav>
                 </div>
-                <div className="header-links__modal-links">
+                <div className="header-modal__links">
                   {config.modalData.links.map((section, index) => (
                     <div key={index}>
                       <p>{section.title}</p>

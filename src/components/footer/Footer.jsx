@@ -15,7 +15,7 @@ const Footer = () => (
           <nav key={index} className="footer-links__list">
             <p className="footer-links__title">{section.title}</p>
             {section.links.map((link, i) => (
-              <a key={i} className="footer-links__link">
+              <a href="/" key={i} className="footer-links__link">
                 {link}
               </a>
             ))}
@@ -42,12 +42,12 @@ const Footer = () => (
       </section>
       <section className="footer-privacy">
         <div className="footer-privacy__first">
-          <div className="footer-privacy__wrapper margin__block">
+          <div className="footer-privacy__wrapper footer-wrapper-margin">
             <p>© 2011-2021</p>
             <p>Міжнародний аеропорт «Київ»</p>
           </div>
           <div className="footer-privacy__wrapper">
-            <a src="https://ufuture.com/uk/" className="footer-privacy__link__img">
+            <a href="https://ufuture.com/uk/" className="footer-privacy__link-img">
               <div className="link_flex">
                 <div>
                   <p>
@@ -59,7 +59,7 @@ const Footer = () => (
                 <img
                   src={logowhite}
                   alt="icon_link_privacy"
-                  className="footer-privacy__logo__white"
+                  className="footer-privacy__logo_white"
                 />
               </div>
             </a>
@@ -67,9 +67,9 @@ const Footer = () => (
         </div>
 
         <div className="footer-privacy__wrapper">
-          <a className="footer-privacy__smpl-link" src="https://smpl.solutions/">
+          <a className="footer-privacy__smpl-link" href="https://smpl.solutions/">
             <p>Розробка сайту</p>
-            <img src={smplLogo} alt="smpl/solution" className="footer-privacy__logo__smpl" />
+            <img src={smplLogo} alt="smpl/solution" className="footer-privacy__logo_smpl" />
           </a>
         </div>
       </section>
