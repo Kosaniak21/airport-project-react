@@ -35,7 +35,6 @@ export default function MyDatePicker({ searchDate, searchNumber }) {
   return (
     <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        {/* Renamed here */}
         <DatePickerContainer components={['DatePicker']}>
           <DatePicker
             label="Ваша дата"
