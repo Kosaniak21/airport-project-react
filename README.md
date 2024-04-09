@@ -41,6 +41,12 @@ The application uses the following technologies:<br />
 
 This application displays flights information fetched from an API and allows the user to filter the flights by departure and arrival airports, airlines, and flight numbers. The user can also sort the flights by departure and arrival times, duration, and price. The application provides a user-friendly interface.
 
+## Attention:
+
+Please be informed that in connection with the war in Ukraine, after 24.02.2022, there is no information about flights. For testing the program, please choose a date before 24.02.2022.
+
+Test dates: 31/12/2021, 27/04/2022, 30/16/2023, 03/31/2023, 04/08/2023, 07/08/2023, 04/04/2023
+
 <div><h1></h1></div>
 
 Copyright (c) 2023-present, [Kosaniak Viktor] (https://github.com/Kosaniak21)

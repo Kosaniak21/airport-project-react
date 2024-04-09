@@ -77,6 +77,14 @@
       color: white;
     }
 
+    &_activeBtn {
+      color: #50c4ee;
+      background-color: white;
+      .fa-sharp {
+        color: #50c4ee;
+      }
+    }
+
     &:hover {
       filter: blur(0px);
     }
@@ -84,7 +92,7 @@
 
   &__list-items {
     height: 600px;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     &::-webkit-scrollbar {
       width: 8px;
@@ -116,6 +124,7 @@
     & span {
       width: 10%;
       display: flex;
+      gap: 12px;
       flex-direction: row;
       align-items: center;
       text-align: center;
@@ -158,13 +167,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-}
-
-.flights__button_activeBtn {
-  color: #50c4ee;
-  background-color: white;
-  .fa-sharp {
-    color: #50c4ee;
   }
 }
