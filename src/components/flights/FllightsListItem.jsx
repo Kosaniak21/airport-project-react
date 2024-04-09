@@ -17,13 +17,10 @@ const FlightsListItem = ({ props, direction }) => {
     codeShare,
   } = props;
 
-  let time;
-
-  if (direction === 'arrival') {
-    time = new Date(arrivalDate) || new Date(arrivalDateExpected);
-  } else {
-    time = new Date(departureDate) || new Date(departureDateExpected);
-  }
+  const time =
+    direction === 'arrival'
+      ? new Date(arrivalDate) || new Date(arrivalDateExpected)
+      : new Date(departureDate) || new Date(departureDateExpected);
 
   const hours = time.getHours();
   const minutes = time.getMinutes();

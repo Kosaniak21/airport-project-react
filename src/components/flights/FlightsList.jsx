@@ -27,23 +27,19 @@ const FlightsList = ({ searchNumber, direction, searchDate }) => {
     });
   });
 
-  return (
-    <>
-      {flights.length === 0 ? (
-        <h2 className="flights__list-empty">Немає рейсів</h2>
-      ) : (
-        <ul className="flights__list-items">
-          {flights.map(elProps => (
-            <FlightsListItem props={elProps} key={elProps.id} direction={direction} />
-          ))}
-        </ul>
-      )}
-    </>
+  return flights.length === 0 ? (
+    <h2 className="flights__list-empty">Немає рейсів</h2>
+  ) : (
+    <ul className="flights__list-items">
+      {flights.map(elProps => (
+        <FlightsListItem props={elProps} key={elProps.id} direction={direction} />
+      ))}
+    </ul>
   );
 };
 
 FlightsList.propTypes = {
-  searchCity: PropTypes.string,
+  searchNumber: PropTypes.string,
   direction: PropTypes.string.isRequired,
   searchDate: PropTypes.string,
 };
