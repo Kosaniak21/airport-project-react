@@ -30,8 +30,11 @@ npm run build
 The application uses the following technologies:<br />
 <br />-HTML
 <br />-CSS3 with Flexbox layout and BEM methodology
-<br />-Bootstrap
-<br />-JavaScript
+<br />-Sass (SCSS) for styling
+<br />-Webpack for bundling
+<br />-React for building UI components
+<br />-Redux for state management
+<br />-React Router for handling navigation
 
 ## Description
 
